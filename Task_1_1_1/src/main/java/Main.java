@@ -16,7 +16,8 @@ public class Main {
     }
 
     /**
-     * sorts given array of integers (heapsort).
+     * sorts given(original) array of integers (heapsort).
+     * if arr == null, then does nothing
      *
      * @param arr Given array of integers
      */
@@ -75,7 +76,7 @@ public class Main {
      */
     public static int[] createRandomArr(int len) {
         int[] arr = new int[len];
-        Random r = new Random();
+        Random r = new Random(1234);
         for (int i = 0; i < len; i++) {
             arr[i] = r.nextInt(201) - 100; // generating number between -100 and 100
         }

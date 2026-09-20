@@ -17,4 +17,11 @@ class MainTest {
             assertArrayEquals(expected, input);
         }
     }
+
+    @Test
+    void testHeapSortNullArray() {
+        int[] input = null;
+        Main.heapsort(input);
+        assertArrayEquals(null, input);
+    }
 }
