@@ -1,4 +1,4 @@
-package task_1_1_2;
+package blackjack;
 
 public class Main {
 

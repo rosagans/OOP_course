@@ -1,4 +1,4 @@
-package task_1_1_2;
+package blackjack;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

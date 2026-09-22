@@ -1,4 +1,4 @@
-package task_1_1_2;
+package blackjack;
 
 import java.util.ArrayList;
 import java.util.Collections;
