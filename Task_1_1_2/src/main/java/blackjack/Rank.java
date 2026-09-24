@@ -1,5 +1,6 @@
 package blackjack;
 
+/** Enum для рангов карт. */
 public enum Rank {
     TWO("Двойка", 2),
     THREE("Тройки", 3),

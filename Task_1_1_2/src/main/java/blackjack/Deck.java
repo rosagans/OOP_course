@@ -38,8 +38,8 @@ public class Deck {
     /**
      * Достает произвольную карту из колоды.
      *
-     * @throws IllegalStateException при попытке достать карту из пустой колоды.
      * @return произвольная карта из колоды.
+     * @throws IllegalStateException при попытке достать карту из пустой колоды.
      */
     public Card draw() {
         if (this.cards.isEmpty()) {

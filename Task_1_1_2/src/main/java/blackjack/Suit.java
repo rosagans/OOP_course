@@ -1,5 +1,7 @@
 package blackjack;
 
+
+/** Enum для мастей карт. */
 public enum Suit {
     HEARTS("Черви"),
     DIAMONDS("Буби"),

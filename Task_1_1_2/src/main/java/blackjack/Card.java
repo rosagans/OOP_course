@@ -9,7 +9,7 @@ public class Card {
     /** Масть карты. */
     private final Suit suit;
 
-    /** Ранг карты */
+    /** Ранг карты. */
     private final Rank rank;
 
     /** Текущая стоимость карты по правилам блэкджека. */
@@ -34,7 +34,8 @@ public class Card {
      */
     @Override
     public String toString() {
-        return String.format("%s %s (%d)", this.rank.getLabel(), this.suit.getLabel(), this.currentValue);
+        return String.format("%s %s (%d)",
+                this.rank.getLabel(), this.suit.getLabel(), this.currentValue);
     }
 
     /**
@@ -56,8 +57,8 @@ public class Card {
     }
 
     /** Устанавливает currentValue = 1 у туза.
-     * @throws IllegalStateException при попытке поменять значение не у туза.
      *
+     * @throws IllegalStateException при попытке поменять значение не у туза.
      */
     public void setAceValueOne() {
         if (!isAce()) {

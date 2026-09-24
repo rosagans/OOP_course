@@ -20,7 +20,7 @@ public class Game {
     /** Счетчик текущего раунда. */
     private int round;
 
-    /** Сканер ввода */
+    /** Сканер ввода. */
     private final Scanner scanner;
 
     /**
@@ -153,11 +153,15 @@ public class Game {
      *
      * @return Объект игрока.
      */
-    public Player getPlayer() { return this.player; }
+    public Player getPlayer() {
+        return this.player;
+    }
 
     /** Геттер для дилера.
      *
      * @return Объект дилера.
      */
-    public Player getDealer() { return this.dealer; }
+    public Player getDealer() {
+        return this.dealer;
+    }
 }
