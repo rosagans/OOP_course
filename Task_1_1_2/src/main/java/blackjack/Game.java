@@ -1,5 +1,7 @@
 package blackjack;
 
+import java.util.Scanner;
+
 /**
  * Класс, управляющий основным игровым циклом блэкджека.
  * Отвечает за координацию действий игрока, дилера, колоды и вывод состояния стола.
@@ -18,13 +20,33 @@ public class Game {
     /** Счетчик текущего раунда. */
     private int round;
 
+    /** Сканер ввода */
+    private final Scanner scanner;
+
     /**
      * Конструирует новую игру, создавая игрока, дилера и колоду карт.
+     *
+     * @param scanner поток ввода
      */
-    public Game() {
+    public Game(Scanner scanner) {
         this.player = new Player("Игрок");
         this.dealer = new Player("Дилер");
+        this.scanner = scanner;
         this.deck = new Deck();
+        this.round = 1;
+    }
+
+    /**
+     * Конструирует новую игру, создавая игрока, дилера и колоду карт.
+     *
+     * @param deck кастомная колода карт.
+     * @param scanner поток ввода.
+     */
+    public Game(Scanner scanner, Deck deck) {
+        this.player = new Player("Игрок");
+        this.dealer = new Player("Дилер");
+        this.scanner = scanner;
+        this.deck = deck;
         this.round = 1;
     }
 
@@ -32,74 +54,61 @@ public class Game {
      * Запускает бесконечный игровой цикл раундов блэкджека.
      */
     public void runGame() {
-        UIconsole.printWelcome();
+        Uiconsole.printWelcome();
         while (true) {
-            this.startGame();
-            this.playerTurn();
+            playSingleRound();
 
-            if (this.player.isBusted()) {
-                this.dealer.addWin();
-                UIconsole.printBusted(this.player, this.player, this.dealer);
-            } else {
-                this.dealerTurn();
-                if (this.dealer.isBusted()) {
-                    this.player.addWin();
-                    UIconsole.printBusted(this.dealer, this.player, this.dealer);
-                } else {
-                    this.determineWinner();
-                }
+            if (this.deck.isLowOnCards()) {
+                this.deck.refillCards();
             }
-            this.round += 1;
         }
     }
 
     /**
      * Подготавливает стол к новому раунду: очищает руки,
-     * при необходимости обновляет колоду и раздает начальные карты.
+     * раздает начальные карты.
      */
     private void startGame() {
         this.player.clearUpHand();
         this.dealer.clearUpHand();
-
-        if (this.deck.isLowOnCards()) {
-            this.deck.refillCards();
-        }
 
         for (int i = 0; i < 2; i++) {
             this.dealer.addCard(this.deck.draw());
             this.player.addCard(this.deck.draw());
         }
 
-        UIconsole.startRound(this.round);
+        Uiconsole.startRound(this.round);
     }
 
     /**
-     * Обрабатывает черед ходов игрока, пока тот не остановится или не наберет 21+ очко.
+     * Обрабатывает черед ходов игрока,
+     * пока тот не остановится или не наберет 21+ очко.
      */
-    private void playerTurn() {
-        UIconsole.printTable(this.player, this.dealer, false);
+    private void playerTurn(Scanner scanner) {
+        Uiconsole.printTable(this.player, this.dealer, false);
         while (this.player.sumUpCards() < 21) {
-            if (UIconsole.getPlayerChoice() == 0) {
+            if (Uiconsole.getPlayerChoice(scanner) == 0) {
                 return;
             }
 
             this.player.addCard(this.deck.draw());
-            UIconsole.printTable(this.player, this.dealer, false);
+            Uiconsole.printTable(this.player, this.dealer, false);
         }
     }
 
     /**
-     * Обрабатывает ход дилера: открывает карту и добирает карты, пока сумма < 17.
+     * Обрабатывает ход дилера:
+     * открывает карту и добирает карты, пока сумма < 17.
      */
     private void dealerTurn() {
-        UIconsole.printDealerMove();
-        UIconsole.printLastCard(this.dealer);
-        UIconsole.printTable(this.player, this.dealer, true);
+        Uiconsole.printDealerMove();
+        Uiconsole.printLastCard(this.dealer);
+        Uiconsole.printTable(this.player, this.dealer, true);
 
         while (this.dealer.sumUpCards() < 17) {
             this.dealer.addCard(this.deck.draw());
-            UIconsole.printLastCard(this.dealer);
-            UIconsole.printTable(this.player, this.dealer, true);
+            Uiconsole.printLastCard(this.dealer);
+            Uiconsole.printTable(this.player, this.dealer, true);
         }
     }
 
@@ -109,14 +118,46 @@ public class Game {
     private void determineWinner() {
         if (this.player.sumUpCards() > this.dealer.sumUpCards()) {
             this.player.addWin();
-            UIconsole.printWinner(this.player, this.player, this.dealer);
+            Uiconsole.printWinner(this.player, this.player, this.dealer);
         } else if (this.player.sumUpCards() == this.dealer.sumUpCards()) {
             this.player.addWin();
             this.dealer.addWin();
-            UIconsole.printTie(this.player, this.dealer);
+            Uiconsole.printTie(this.player, this.dealer);
         } else {
             this.dealer.addWin();
-            UIconsole.printWinner(this.dealer, this.player, this.dealer);
+            Uiconsole.printWinner(this.dealer, this.player, this.dealer);
         }
     }
+
+    /** Симуляция одного раунда в блэкджеке. */
+    protected void playSingleRound() {
+        this.startGame();
+        this.playerTurn(this.scanner);
+
+        if (this.player.isBusted()) {
+            this.dealer.addWin();
+            Uiconsole.printBusted(this.player, this.player, this.dealer);
+        } else {
+            this.dealerTurn();
+            if (this.dealer.isBusted()) {
+                this.player.addWin();
+                Uiconsole.printBusted(this.dealer, this.player, this.dealer);
+            } else {
+                this.determineWinner();
+            }
+        }
+        this.round += 1;
+    }
+
+    /** Геттер для игрока.
+     *
+     * @return Объект игрока.
+     */
+    public Player getPlayer() { return this.player; }
+
+    /** Геттер для дилера.
+     *
+     * @return Объект дилера.
+     */
+    public Player getDealer() { return this.dealer; }
 }

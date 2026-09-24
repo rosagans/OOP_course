@@ -6,29 +6,25 @@ package blackjack;
  */
 public class Card {
 
-    /** Массив строковых названий мастей. */
-    private static final String[] SUITS = {"Черви", "Буби", "Пики", "Крести"};
+    /** Масть карты. */
+    private final Suit suit;
 
-    /** Массив строковых названий рангов (достоинств) карт. */
-    private static final String[] RANKS = {
-        "Двойка", "Тройка", "Четверка", "Пятерка", "Шестерка", "Семерка",
-        "Восьмерка", "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз"
-    };
+    /** Ранг карты */
+    private final Rank rank;
 
-    /** Уникальный индекс карты в колоде (от 0 до 51). */
-    private final int number;
-
-    /** Текущая стоимость карты в очках блэкджека. */
-    private int value;
+    /** Текущая стоимость карты по правилам блэкджека. */
+    private int currentValue;
 
     /**
-     * Создает карту по её уникальному индексу.
+     * Создает карту по её масти и рангу.
      *
-     * @param number индекс карты от 0 до 51
+     * @param suit масть карты.
+     * @param rank ранг карты.
      */
-    public Card(int number) {
-        this.number = number;
-        this.value = initValue();
+    public Card(Suit suit, Rank rank) {
+        this.suit = suit;
+        this.rank = rank;
+        this.currentValue = rank.getBaseValue();
     }
 
     /**
@@ -38,20 +34,7 @@ public class Card {
      */
     @Override
     public String toString() {
-        String rankName = RANKS[this.number % 13];
-        String suitName = SUITS[this.number / 13];
-        return String.format("%s %s (%d)", rankName, suitName, this.value);
-    }
-
-    /**
-     * Вычисляет начальное количество очков для карты по правилам блэкджека.
-     *
-     * @return 11 для Туза, 10 для картинок и 10-к, достоинство + 2 для остальных
-     */
-    private int initValue() {
-        if (this.number % 13 == 12) { return 11; }
-        if (7 < this.number % 13 && this.number % 13 < 12) { return 10; }
-        return this.number % 13 + 2;
+        return String.format("%s %s (%d)", this.rank.getLabel(), this.suit.getLabel(), this.currentValue);
     }
 
     /**
@@ -60,7 +43,7 @@ public class Card {
      * @return true, если карта является Тузом, иначе false
      */
     public boolean isAce() {
-        return this.number % 13 == 12;
+        return this.rank == Rank.ACE;
     }
 
     /**
@@ -69,15 +52,17 @@ public class Card {
      * @return стоимость карты в очках
      */
     public int getValue() {
-        return this.value;
+        return this.currentValue;
     }
 
-    /**
-     * Изменяет количество очков карты (например, снижает с 11 до 1 при переборе).
+    /** Устанавливает currentValue = 1 у туза.
+     * @throws IllegalStateException при попытке поменять значение не у туза.
      *
-     * @param newValue новое значение очков карты
      */
-    public void setValue(int newValue) {
-        this.value = newValue;
+    public void setAceValueOne() {
+        if (!isAce()) {
+            throw new IllegalStateException("Изменить стоимость на 1 можно только у Туза!");
+        }
+        this.currentValue = 1;
     }
 }

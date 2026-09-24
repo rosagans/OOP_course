@@ -5,10 +5,7 @@ import java.util.Scanner;
 /**
  * Утилитный класс для отображения консольного интерфейса и обработки ввода пользователя.
  */
-public class UIconsole {
-
-    /** Сканер для считывания команд из стандартного потока ввода. */
-    private static final Scanner SCANNER = new Scanner(System.in);
+public class Uiconsole {
 
     /**
      * Выводит приветственное сообщение перед началом игры.
@@ -24,7 +21,7 @@ public class UIconsole {
      */
     public static void startRound(int round) {
         System.out.printf("\n--- Раунд %d ---\n", round);
-        UIconsole.sleep(2);
+        Uiconsole.sleep(2);
     }
 
     /**
@@ -43,9 +40,9 @@ public class UIconsole {
                     dealer.getName(), dealer.getCards(), dealer.sumUpCards());
         } else {
             System.out.printf("Карты %s: [%s, <закрытая карта>]\n",
-                    dealer.getName(), dealer.getCards().get(0));
+                    dealer.getName(), dealer.getCards().getFirst());
         }
-        UIconsole.sleep(1);
+        Uiconsole.sleep(1);
     }
 
     /**
@@ -53,14 +50,14 @@ public class UIconsole {
      *
      * @return 1, если выбран ход "взять карту", 0, если "остановиться"
      */
-    public static int getPlayerChoice() {
+    public static int getPlayerChoice(Scanner scanner) {
         while (true) {
             System.out.println("\nВаш ход:");
             System.out.println("1 — Взять карту");
             System.out.println("0 — Остановиться");
             System.out.print("Введите команду: ");
 
-            String input = SCANNER.nextLine().strip();
+            String input = scanner.nextLine().strip();
             if ("1".equals(input)) {
                 return 1;
             } else if ("0".equals(input)) {

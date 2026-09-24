@@ -10,10 +10,10 @@ class CardTest {
     @Test
     @DisplayName("Проверка инициализации стоимости очков для разных карт")
     void testCardValueInitialization() {
-        Card ace = new Card(12);   // Туз Черви -> 11 очков
-        Card king = new Card(11);  // Король Черви -> 10 очков
-        Card ten = new Card(8);    // Десятка Черви -> 10 очков
-        Card two = new Card(0);    // Двойка Черви -> 2 очка
+        Card ace = new Card(Suit.HEARTS, Rank.ACE);   // Туз Черви -> 11 очков
+        Card king = new Card(Suit.HEARTS, Rank.KING);  // Король Черви -> 10 очков
+        Card ten = new Card(Suit.CLUBS, Rank.TEN);    // Десятка Черви -> 10 очков
+        Card two = new Card(Suit.HEARTS, Rank.TWO);    // Двойка Черви -> 2 очка
 
         assertEquals(11, ace.getValue());
         assertEquals(10, king.getValue());
@@ -24,8 +24,8 @@ class CardTest {
     @Test
     @DisplayName("Проверка метода isAce")
     void testIsAce() {
-        Card ace = new Card(12);
-        Card notAce = new Card(0);
+        Card ace = new Card(Suit.HEARTS, Rank.ACE);
+        Card notAce = new Card(Suit.HEARTS, Rank.TWO);
 
         assertTrue(ace.isAce());
         assertFalse(notAce.isAce());
@@ -34,15 +34,15 @@ class CardTest {
     @Test
     @DisplayName("Проверка изменения значения карты с 11 на 1")
     void testSetValue() {
-        Card ace = new Card(12);
-        ace.setValue(1);
+        Card ace = new Card(Suit.DIAMONDS, Rank.ACE);
+        ace.setAceValueOne();
         assertEquals(1, ace.getValue());
     }
 
     @Test
     @DisplayName("Проверка текстового представления toString")
     void testToString() {
-        Card card = new Card(12); // Туз Черви (11)
-        assertEquals("Туз Черви (11)", card.toString());
+        Card card = new Card(Suit.SPADES, Rank.ACE); // Туз пики (11)
+        assertEquals("Туз Пики (11)", card.toString());
     }
 }

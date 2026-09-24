@@ -81,7 +81,7 @@ public class Player {
 
         for (Card card : this.cards) {
             if (card.isAce() && card.getValue() == 11) {
-                card.setValue(1);
+                card.setAceValueOne();
                 if (this.sumUpCards() <= 21) {
                     return;
                 }
@@ -107,7 +107,7 @@ public class Player {
     }
 
     /**
-     * Возвращает имя игрока
+     * Возвращает имя игрока.
      *
      * @return имя игрока
      */
