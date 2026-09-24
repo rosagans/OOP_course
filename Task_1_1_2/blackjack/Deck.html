@@ -105,7 +105,11 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">Deck</a>()</code></div>
 <div class="col-last even-row-color">
-<div class="block">Конструирует колоду карт, сразу ее тасуя</div>
+<div class="block">Конструирует колоду карт, сразу ее тасуя.</div>
+</div>
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(java.util.List)" class="member-name-link">Deck</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Card.html" title="class in blackjack">Card</a>&gt;&nbsp;cards)</code></div>
+<div class="col-last odd-row-color">
+<div class="block">Конструктор для создания кастомной колоды.</div>
 </div>
 </div>
 </section>
@@ -124,22 +128,22 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Card.html" title="class in blackjack">Card</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#draw()" class="member-name-link">draw</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Достает произвольную карту из колоды</div>
+<div class="block">Достает произвольную карту из колоды.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSize()" class="member-name-link">getSize</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Возвращает количество карт в колоде в настоящий момент</div>
+<div class="block">Возвращает количество карт в колоде в настоящий момент.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isLowOnCards()" class="member-name-link">isLowOnCards</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Проверяет насколько мало карт осталось в колоде</div>
+<div class="block">Проверяет насколько мало карт осталось в колоде.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#refillCards()" class="member-name-link">refillCards</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Перезаполняет карты в колоде и тасует их</div>
+<div class="block">Перезаполняет карты в колоде и тасует их.</div>
 </div>
 </div>
 </div>
@@ -162,7 +166,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>Deck</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Deck</span>()</div>
-<div class="block">Конструирует колоду карт, сразу ее тасуя</div>
+<div class="block">Конструирует колоду карт, сразу ее тасуя.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="&lt;init&gt;(java.util.List)">
+<h3>Deck</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Deck</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Card.html" title="class in blackjack">Card</a>&gt;&nbsp;cards)</span></div>
+<div class="block">Конструктор для создания кастомной колоды.</div>
 </section>
 </li>
 </ul>
@@ -177,17 +188,19 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="refillCards()">
 <h3>refillCards</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">refillCards</span>()</div>
-<div class="block">Перезаполняет карты в колоде и тасует их</div>
+<div class="block">Перезаполняет карты в колоде и тасует их.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="draw()">
 <h3>draw</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Card.html" title="class in blackjack">Card</a></span>&nbsp;<span class="element-name">draw</span>()</div>
-<div class="block">Достает произвольную карту из колоды</div>
+<div class="block">Достает произвольную карту из колоды.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>произвольная карта из колоды</dd>
+<dd>произвольная карта из колоды.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - при попытке достать карту из пустой колоды.</dd>
 </dl>
 </section>
 </li>
@@ -195,7 +208,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="isLowOnCards()">
 <h3>isLowOnCards</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isLowOnCards</span>()</div>
-<div class="block">Проверяет насколько мало карт осталось в колоде</div>
+<div class="block">Проверяет насколько мало карт осталось в колоде.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>true, если карт в колоде меньше половины; false иначе</dd>
@@ -206,7 +219,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getSize()">
 <h3>getSize</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getSize</span>()</div>
-<div class="block">Возвращает количество карт в колоде в настоящий момент</div>
+<div class="block">Возвращает количество карт в колоде в настоящий момент.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>количество карт в колоде в настоящий момент</dd>
