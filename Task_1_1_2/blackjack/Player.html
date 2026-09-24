@@ -184,18 +184,23 @@ loadScripts(document, 'script');</script>
 <div class="block">Проверяет наличие хотя бы одного Туза в руке у игрока.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isBusted()" class="member-name-link">isBusted</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hitBlackjack()" class="member-name-link">hitBlackjack</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Проверяет собрал ли игрок blackjack.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isBusted()" class="member-name-link">isBusted</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Проверяет, превысила ли сумма очков игрока допустимый лимит в 21 очко.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#recalculateGrades()" class="member-name-link">recalculateGrades</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#recalculateGrades()" class="member-name-link">recalculateGrades</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Пересчитывает очковое значение Тузов с 11 на 1, если у игрока перебор.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sumUpCards()" class="member-name-link">sumUpCards</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sumUpCards()" class="member-name-link">sumUpCards</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Вычисляет суммарную стоимость всех карт в руке игрока.</div>
 </div>
 </div>
@@ -355,6 +360,17 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>список объектов Card</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="hitBlackjack()">
+<h3>hitBlackjack</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">hitBlackjack</span>()</div>
+<div class="block">Проверяет собрал ли игрок blackjack.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>Возвращает true, если у игрока blackjack, false - иначе.</dd>
 </dl>
 </section>
 </li>
