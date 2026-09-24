@@ -131,8 +131,32 @@ public class Game {
 
     /** Симуляция одного раунда в блэкджеке. */
     protected void playSingleRound() {
+
         this.startGame();
+
+        boolean playerHasBJ = this.player.hitBlackjack();
+        boolean dealerHasBJ = this.dealer.hitBlackjack();
+
+        if (playerHasBJ || dealerHasBJ) {
+            Uiconsole.printTable(this.player, this.dealer, true);
+
+            if (playerHasBJ && dealerHasBJ) {
+                this.player.addWin();
+                this.dealer.addWin();
+                Uiconsole.printTie(this.player, this.dealer);
+            } else if (playerHasBJ) {
+                this.player.addWin();
+                Uiconsole.printWinner(this.player, this.player, this.dealer);
+            } else {
+                this.dealer.addWin();
+                Uiconsole.printWinner(this.dealer, this.player, this.dealer);
+            }
+            this.round += 1;
+            return;
+        }
+
         this.playerTurn(this.scanner);
+
 
         if (this.player.isBusted()) {
             this.dealer.addWin();
@@ -163,5 +187,14 @@ public class Game {
      */
     public Player getDealer() {
         return this.dealer;
+    }
+
+    /**
+     *  Геттер для колоды карт.
+     *
+     * @return Объект колода карт
+     */
+    public Deck getDeck() {
+        return this.deck;
     }
 }

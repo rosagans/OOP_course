@@ -132,4 +132,13 @@ public class Player {
     public List<Card> getCards() {
         return this.cards;
     }
+
+    /**
+     * Проверяет собрал ли игрок blackjack.
+     *
+     * @return Возвращает true, если у игрока blackjack, false - иначе.
+     */
+    public boolean hitBlackjack() {
+        return this.sumUpCards() == 21 && this.cards.size() == 2;
+    }
 }

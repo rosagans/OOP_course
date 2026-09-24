@@ -13,11 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GameTest {
 
     @Test
-    @DisplayName("Игрок решает остановиться (0) и побеждает дилера по очкам")
-    void testPlayerStandsAndWins() {
+    @DisplayName("Игрок получает блэкджек, дилер - нет")
+    void testPlayerHitsBlackjack() {
 
         List<Card> customCards = new ArrayList<>(List.of(
-                new Card(Suit.HEARTS, Rank.SIX),   // Добор дилера (6) -> 17
+                new Card(Suit.HEARTS, Rank.SIX),   // У игрока блэкджек => карта не будет взята
                 new Card(Suit.SPADES, Rank.ACE),    // 2-я карта игрока (11) -> 21
                 new Card(Suit.CLUBS, Rank.NINE),    // 2-я карта дилера (9) -> 11
                 new Card(Suit.DIAMONDS, Rank.KING), // 1-я карта игрока (10) -> 10
@@ -31,8 +31,59 @@ class GameTest {
         game.playSingleRound();
 
         assertEquals(21, game.getPlayer().sumUpCards());
-        assertEquals(17, game.getDealer().sumUpCards());
+        assertEquals(11, game.getDealer().sumUpCards());
         assertEquals(1, game.getPlayer().getRoundsWon());
+        assertEquals(1, game.getDeck().getSize());
+    }
+
+    @Test
+    @DisplayName("Дилер получает блэкджек, игрок - нет")
+    void testDealerHitsBlackjack() {
+
+        List<Card> customCards = new ArrayList<>(List.of(
+                new Card(Suit.SPADES, Rank.QUEEN),   // У дилера блэкджек => карта не будет взята
+                new Card(Suit.HEARTS, Rank.SIX),   // У дилера блэкджек => карта не будет взята
+                new Card(Suit.SPADES, Rank.SIX),    // 2-я карта игрока (6) -> 13
+                new Card(Suit.CLUBS, Rank.ACE),    // 2-я карта дилера (11) -> 21
+                new Card(Suit.DIAMONDS, Rank.SEVEN), // 1-я карта игрока (7) -> 7
+                new Card(Suit.HEARTS, Rank.TEN)     // 1-я карта дилера (10) -> 10
+        ));
+
+        Deck customDeck = new Deck(customCards);
+        Scanner scanner = new Scanner("0\n");
+
+        Game game = new Game(scanner, customDeck);
+        game.playSingleRound();
+
+        assertEquals(13, game.getPlayer().sumUpCards());
+        assertEquals(21, game.getDealer().sumUpCards());
+        assertEquals(1, game.getDealer().getRoundsWon());
+        assertEquals(2, game.getDeck().getSize());
+    }
+
+    @Test
+    @DisplayName("Игрок и дилер получают блэкджек")
+    void testPlayerAndDealerHitBlackjack() {
+
+        List<Card> customCards = new ArrayList<>(List.of(
+                new Card(Suit.HEARTS, Rank.SIX),   // У дилера блэкджек => карта не будет взята
+                new Card(Suit.SPADES, Rank.ACE),    // 2-я карта игрока (11) -> 21
+                new Card(Suit.CLUBS, Rank.ACE),    // 2-я карта дилера (11) -> 21
+                new Card(Suit.DIAMONDS, Rank.QUEEN), // 1-я карта игрока (10) -> 10
+                new Card(Suit.HEARTS, Rank.TEN)     // 1-я карта дилера (10) -> 10
+        ));
+
+        Deck customDeck = new Deck(customCards);
+        Scanner scanner = new Scanner("0\n");
+
+        Game game = new Game(scanner, customDeck);
+        game.playSingleRound();
+
+        assertEquals(21, game.getPlayer().sumUpCards());
+        assertEquals(21, game.getDealer().sumUpCards());
+        assertEquals(1, game.getPlayer().getRoundsWon());
+        assertEquals(1, game.getDealer().getRoundsWon());
+        assertEquals(1, game.getDeck().getSize());
     }
 
     @Test
@@ -103,5 +154,83 @@ class GameTest {
         assertEquals(20, game.getDealer().sumUpCards());
         assertEquals(1, game.getPlayer().getRoundsWon());
         assertEquals(1, game.getDealer().getRoundsWon());
+    }
+
+    @Test
+    @DisplayName("Дилер перебирает (Bust) при доборе карты")
+    void testDealerBusts() {
+
+        List<Card> customCards = new ArrayList<>(List.of(
+                new Card(Suit.DIAMONDS, Rank.TWO),   // Дилер перебрал => карта остается в колоде
+                new Card(Suit.SPADES, Rank.QUEEN),   // 3-я карта дилера (10) -> 26
+                new Card(Suit.SPADES, Rank.TEN),   // 2-я карта игрока (10) -> 20
+                new Card(Suit.CLUBS, Rank.SIX),    // 2-я карта дилера (6) -> 16
+                new Card(Suit.DIAMONDS, Rank.TEN), // 1-я карта игрока (10) -> 10
+                new Card(Suit.HEARTS, Rank.TEN)    // 1-я карта дилера (10) -> 10
+        ));
+
+        Deck customDeck = new Deck(customCards);
+        Scanner scanner = new Scanner("0\n");
+
+        Game game = new Game(scanner, customDeck);
+        game.playSingleRound();
+
+        assertEquals(20, game.getPlayer().sumUpCards());
+        assertEquals(26, game.getDealer().sumUpCards());
+        assertEquals(1, game.getPlayer().getRoundsWon());
+        assertEquals(1, game.getDeck().getSize());
+    }
+
+    @Test
+    @DisplayName("Игрок и дилер берут - у дилера больше")
+    void testDealerIsBetter() {
+
+        List<Card> customCards = new ArrayList<>(List.of(
+                new Card(Suit.DIAMONDS, Rank.ACE),   // 3-я карта дилера (11) -> 20
+                new Card(Suit.SPADES, Rank.SEVEN),   // 3-я карта игрока (7) -> 19
+                new Card(Suit.SPADES, Rank.FIVE),   // 2-я карта игрока (5) -> 12
+                new Card(Suit.CLUBS, Rank.SIX),    // 2-я карта дилера (6) -> 9
+                new Card(Suit.DIAMONDS, Rank.SEVEN), // 1-я карта игрока (7) -> 7
+                new Card(Suit.HEARTS, Rank.THREE)    // 1-я карта дилера (3) -> 3
+        ));
+
+        Deck customDeck = new Deck(customCards);
+        Scanner scanner = new Scanner("1\n0\n");
+
+        Game game = new Game(scanner, customDeck);
+        game.playSingleRound();
+
+        assertEquals(19, game.getPlayer().sumUpCards());
+        assertEquals(20, game.getDealer().sumUpCards());
+        assertEquals(1, game.getDealer().getRoundsWon());
+        assertEquals(0, game.getDeck().getSize());
+    }
+
+    @Test
+    @DisplayName("Игрок много берет, но у дилера лучше")
+    void testPlayerHitsALot() {
+
+        List<Card> customCards = new ArrayList<>(List.of(
+                new Card(Suit.CLUBS, Rank.FIVE),   // 3-я карта дилера (5) -> 20
+                new Card(Suit.CLUBS, Rank.THREE),   // 6-я карта игрока (3) -> 19
+                new Card(Suit.CLUBS, Rank.TWO),   // 5-я карта игрока (2) -> 16
+                new Card(Suit.DIAMONDS, Rank.FIVE),   // 4-я карта игрока (5) -> 14
+                new Card(Suit.SPADES, Rank.FOUR),   // 3-я карта игрока (4) -> 9
+                new Card(Suit.SPADES, Rank.THREE),   // 2-я карта игрока (3) -> 5
+                new Card(Suit.CLUBS, Rank.EIGHT),    // 2-я карта дилера (8) -> 15
+                new Card(Suit.DIAMONDS, Rank.TWO), // 1-я карта игрока (2) -> 2
+                new Card(Suit.HEARTS, Rank.SEVEN)    // 1-я карта дилера (7) -> 7
+        ));
+
+        Deck customDeck = new Deck(customCards);
+        Scanner scanner = new Scanner("1\n1\n1\n1\n0\n");
+
+        Game game = new Game(scanner, customDeck);
+        game.playSingleRound();
+
+        assertEquals(19, game.getPlayer().sumUpCards());
+        assertEquals(20, game.getDealer().sumUpCards());
+        assertEquals(1, game.getDealer().getRoundsWon());
+        assertEquals(0, game.getDeck().getSize());
     }
 }
