@@ -1,4 +1,4 @@
-package mathExpression;
+package mathexpression;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,20 +9,20 @@ class PrintTest {
     @Test
     void printNumber() {
         Expression e = new Number(0);
-        assertEquals( "0", e.toString());
+        assertEquals("0", e.toString());
     }
 
     @Test
     void printVariable() {
         Expression e = new Variable("qwerty");
-        assertEquals( "qwerty", e.toString());
+        assertEquals("qwerty", e.toString());
     }
 
     @Test
     void printExpr1() {
         Expression e = new Add(new Number(3), new Mul(new Number(2),
                 new Variable("x")));
-        assertEquals( "(3+(2*x))", e.toString());
+        assertEquals("(3+(2*x))", e.toString());
     }
 
     @Test
@@ -32,7 +32,7 @@ class PrintTest {
                         new Number(666)),
                 new Mul(new Number(2),
                         new Variable("xy")));
-        assertEquals( "((190*666)-(2*xy))", e.toString());
+        assertEquals("((190*666)-(2*xy))", e.toString());
     }
 
     @Test
@@ -45,6 +45,6 @@ class PrintTest {
                                 new Number(3)),
                         new Number(2)),
                 new Number(1));
-        assertEquals( "((((y-4)/3)*2)+1)", e.toString());
+        assertEquals("((((y-4)/3)*2)+1)", e.toString());
     }
 }

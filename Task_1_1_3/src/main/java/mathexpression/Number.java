@@ -1,4 +1,4 @@
-package mathExpression;
+package mathexpression;
 
 /**
  * Математическое выражение числовой константы.

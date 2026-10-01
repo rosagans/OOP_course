@@ -1,4 +1,4 @@
-package mathExpression;
+package mathexpression;
 
 import org.junit.jupiter.api.Test;
 
@@ -7,25 +7,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class DerivativeTest {
 
     @Test
-    void DiffVariable1() {
+    void diffVariable1() {
         Expression var = new Variable("x");
         assertEquals("1", var.derivative("x").toString());
     }
 
     @Test
-    void DiffVariable2() {
+    void diffVariable2() {
         Expression var = new Variable("y");
         assertEquals("0", var.derivative("x").toString());
     }
 
     @Test
-    void DiffNumber() {
+    void diffNumber() {
         Expression number = new Number(100);
         assertEquals("0", number.derivative("x").toString());
     }
 
     @Test
-    void DiffExpr1() {
+    void diffExpr1() {
         // e = (3+(2*x))
         Expression e = new Add(new Number(3), new Mul(new Number(2),
                 new Variable("x")));
@@ -34,7 +34,7 @@ class DerivativeTest {
     }
 
     @Test
-    void DiffExpr2() {
+    void diffExpr2() {
         // e = ((190*666)-(2*xy))
         Expression e = new Sub(
                 new Mul(new Number(190),
@@ -46,7 +46,7 @@ class DerivativeTest {
     }
 
     @Test
-    void DiffExpr3() {
+    void diffExpr3() {
         // e = ((y-4)/3)
         Expression e = new Div(
                     new Sub(new Variable("y"),

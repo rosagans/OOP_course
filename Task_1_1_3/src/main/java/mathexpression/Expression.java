@@ -1,4 +1,4 @@
-package mathExpression;
+package mathexpression;
 
 /**
  * Абстрактный базовый класс математического выражения.
@@ -75,14 +75,14 @@ public abstract class Expression {
             String expr2 = string.substring(indexOfOperation + 1, string.length() - 1);
 
             char operation = string.charAt(indexOfOperation);
-            Expression final_expr = switch (operation) {
+            Expression finalExpr = switch (operation) {
                 case '-' -> new Sub(makeExpression(expr1), makeExpression(expr2));
                 case '+' -> new Add(makeExpression(expr1), makeExpression(expr2));
                 case '*' -> new Mul(makeExpression(expr1), makeExpression(expr2));
                 case '/' -> new Div(makeExpression(expr1), makeExpression(expr2));
                 default -> throw new Exception("Cannot parse current expression");
             };
-            return final_expr;
+            return finalExpr;
 
         } else {
             throw new Exception("Cannot parse current expression");
@@ -103,7 +103,7 @@ public abstract class Expression {
             } else if (string.charAt(i) == ')') {
                 parenthesisCount--;
             }
-            if(Operations.contains(string.charAt(i)) && parenthesisCount == 1) {
+            if (Operations.contains(string.charAt(i)) && parenthesisCount == 1) {
                 return i;
             }
         }

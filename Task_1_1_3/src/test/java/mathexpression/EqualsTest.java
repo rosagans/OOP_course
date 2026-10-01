@@ -1,4 +1,4 @@
-package mathExpression;
+package mathexpression;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 class EqualsTest {
 
     @Test
-    void Numbers() {
+    void numbers() {
         Expression e1 = new Number(0);
         Expression e2 = new Number(0);
         Expression e3 = new Number(1);
@@ -17,7 +17,7 @@ class EqualsTest {
     }
 
     @Test
-    void Variables() {
+    void variables() {
         Expression e1 = new Variable("x");
         Expression e2 = new Variable("x");
         Expression e3 = new Variable("y");
@@ -26,7 +26,7 @@ class EqualsTest {
     }
 
     @Test
-    void Expressions1() {
+    void expressions1() {
         Expression exprBase = new Add(new Number(5), new Number(6));
         Expression exprSame = new Add(new Number(5), new Number(6));
         Expression exprSwpd = new Add(new Number(6), new Number(5));
@@ -35,7 +35,7 @@ class EqualsTest {
     }
 
     @Test
-    void Expressions2() {
+    void expressions2() {
         Expression exprBase = new Add(new Number(5), new Number(6));
         Expression exprSame = new Add(new Number(5), new Number(6));
         Expression exprSwpd = new Add(new Number(6), new Number(5));
@@ -44,7 +44,7 @@ class EqualsTest {
     }
 
     @Test
-    void Expressions3() {
+    void expressions3() {
         // exprBase = ((190*666)-(2*xy))
         Expression exprBase = new Sub(
                 new Mul(new Number(190),
@@ -68,7 +68,7 @@ class EqualsTest {
     }
 
     @Test
-    void Expressions4() {
+    void expressions4() {
         Expression exprBase = new Div(new Number(6), new Number(3));
         Expression exprSame = new Div(new Number(6), new Number(3));
         Expression exprDifferent = new Div(new Number(3), new Number(6));
@@ -77,7 +77,7 @@ class EqualsTest {
     }
 
     @Test
-    void Expressions5() {
+    void expressions5() {
         // exprBase = ((((y-4)/3)*2)+1)
         Expression exprBase = new Add(
                 new Mul(

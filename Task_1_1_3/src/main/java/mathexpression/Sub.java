@@ -1,9 +1,9 @@
-package mathExpression;
+package mathexpression;
 
 /**
  * Математическое выражение операции вычитания.
  */
-public class Sub extends Expression{
+public class Sub extends Expression {
 
     /**
      * Уменьшаемое выражение.
@@ -52,7 +52,7 @@ public class Sub extends Expression{
     @Override
     public String toString() {
         return '(' + this.minuend.toString() + "-" + this.subtrahend.toString() + ")";
-     }
+    }
 
     /**
      * Вычисляет разность результатов вычисления операндов.
@@ -61,10 +61,10 @@ public class Sub extends Expression{
      * @return разность операндов
      * @throws Exception если произошла ошибка при вычислении операндов
      */
-     @Override
+    @Override
     public int eval(String signification) throws Exception {
         return this.minuend.eval(signification) - this.subtrahend.eval(signification);
-     }
+    }
 
     /**
      * Вычисляет производную разности по правилу: (f - g)' = f' - g'.
@@ -74,7 +74,8 @@ public class Sub extends Expression{
      */
     @Override
     public Expression derivative(String givenVariable) {
-        return new Sub(this.minuend.derivative(givenVariable), this.subtrahend.derivative(givenVariable));
+        return new Sub(this.minuend.derivative(givenVariable),
+                this.subtrahend.derivative(givenVariable));
     }
 
     /**
@@ -86,8 +87,8 @@ public class Sub extends Expression{
      */
     @Override
     public boolean equals(Expression expr) {
-        return expr instanceof Sub &&
-                this.minuend.equals(((Sub) expr).getMinuend()) &&
-                this.subtrahend.equals(((Sub) expr).getSubtrahend());
+        return expr instanceof Sub
+                && this.minuend.equals(((Sub) expr).getMinuend())
+                && this.subtrahend.equals(((Sub) expr).getSubtrahend());
     }
 }

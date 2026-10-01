@@ -1,9 +1,9 @@
-package mathExpression;
+package mathexpression;
 
 /**
- * Математическое выражение переменной
+ * Математическое выражение переменной.
  */
-public class Variable extends Expression{
+public class Variable extends Expression {
 
     /**
      * Имя переменной.
@@ -55,7 +55,8 @@ public class Variable extends Expression{
                 return Integer.parseInt(parts[2]);
             }
         }
-        throw new Exception("Wrong signification! variable (" + this.label + ") didnt get any signification.");
+        throw new Exception("Wrong signification! variable ("
+                + this.label + ") didnt get any signification.");
     }
 
     /**

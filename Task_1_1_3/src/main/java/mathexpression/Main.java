@@ -1,6 +1,10 @@
-package mathExpression;
+package mathexpression;
+
 import java.util.Scanner;
 
+/**
+ * Главный класс приложения для интерактивного ввода и разбора математических выражений.
+ */
 public class Main {
 
     /**

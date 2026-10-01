@@ -1,4 +1,4 @@
-package mathExpression;
+package mathexpression;
 
 /**
  * Перечисление поддерживаемых бинарных математических операций.
@@ -32,7 +32,7 @@ public enum Operations {
      */
     public static boolean contains(char c) {
         for (Operations operation : Operations.values()) {
-            if(c == operation.label) {
+            if (c == operation.label) {
                 return true;
             }
         }

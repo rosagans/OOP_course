@@ -1,9 +1,9 @@
-package mathExpression;
+package mathexpression;
 
 /**
  * Математическое выражение операции сложения.
  */
-public class Add extends Expression{
+public class Add extends Expression {
 
     /**
      * Левое слагаемое выражения.
@@ -74,7 +74,8 @@ public class Add extends Expression{
      */
     @Override
     public Expression derivative(String givenVariable) {
-        return new Add(this.leftAddend.derivative(givenVariable), this.rightAddend.derivative(givenVariable));
+        return new Add(this.leftAddend.derivative(givenVariable),
+                this.rightAddend.derivative(givenVariable));
     }
 
     /**
@@ -86,8 +87,8 @@ public class Add extends Expression{
      */
     @Override
     public boolean equals(Expression expr) {
-        return expr instanceof Add &&
-                this.leftAddend.equals(((Add) expr).getLeftAddend()) &&
-                this.rightAddend.equals(((Add) expr).getRightAddend());
+        return expr instanceof Add
+                && this.leftAddend.equals(((Add) expr).getLeftAddend())
+                && this.rightAddend.equals(((Add) expr).getRightAddend());
     }
 }

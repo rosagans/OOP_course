@@ -1,4 +1,4 @@
-package mathExpression;
+package mathexpression;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,13 +10,13 @@ class SignificationTest {
     @Test
     void signifyNumber() throws Exception {
         Expression e = new Number(0);
-        assertEquals( 0, e.eval("x = 10"));
+        assertEquals(0, e.eval("x = 10"));
     }
 
     @Test
     void signifyVariable() throws Exception {
         Expression e = new Variable("x");
-        assertEquals( 10, e.eval("x = 10"));
+        assertEquals(10, e.eval("x = 10"));
     }
 
     @Test
@@ -36,7 +36,7 @@ class SignificationTest {
         Expression e = new Add(new Number(3), new Mul(new Number(2),
                 new Variable("x")));
 
-        assertEquals( 17, e.eval("x = 7"));
+        assertEquals(17, e.eval("x = 7"));
     }
 
     @Test
@@ -48,7 +48,7 @@ class SignificationTest {
                 new Mul(new Number(2),
                         new Variable("xy")));
 
-        assertEquals( 126536, e.eval("xy = 2"));
+        assertEquals(126536, e.eval("xy = 2"));
     }
 
     @Test
@@ -59,7 +59,7 @@ class SignificationTest {
                         new Variable("x")),
                 new Number(3));
 
-        assertEquals( 0, e.eval("x = 2; y = 2"));
+        assertEquals(0, e.eval("x = 2; y = 2"));
     }
 
     @Test
@@ -68,7 +68,7 @@ class SignificationTest {
         Expression e = new Add(new Variable("qwerty"), new Mul(new Number(2),
                 new Variable("x")));
 
-        assertEquals( 15, e.eval("x = 7; qwerty = 1"));
+        assertEquals(15, e.eval("x = 7; qwerty = 1"));
     }
 
     @Test
@@ -79,6 +79,6 @@ class SignificationTest {
                         new Variable("x")),
                 new Variable("z"));
 
-        assertEquals( 1, e.eval("x = 1; y = 2; z = 1"));
+        assertEquals(1, e.eval("x = 1; y = 2; z = 1"));
     }
 }

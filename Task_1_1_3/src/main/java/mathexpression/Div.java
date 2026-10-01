@@ -1,9 +1,9 @@
-package mathExpression;
+package mathexpression;
 
 /**
  * Математическое выражение операции деления.
  */
-public class Div extends Expression{
+public class Div extends Expression {
 
     /**
      * Делимое выражение.
@@ -95,8 +95,8 @@ public class Div extends Expression{
      */
     @Override
     public boolean equals(Expression expr) {
-        return expr instanceof Div &&
-                this.dividend.equals(((Div) expr).getDividend()) &&
-                this.divisor.equals(((Div) expr).getDivisor());
+        return expr instanceof Div
+                && this.dividend.equals(((Div) expr).getDividend())
+                && this.divisor.equals(((Div) expr).getDivisor());
     }
 }

@@ -1,9 +1,9 @@
-package mathExpression;
+package mathexpression;
 
 /**
  * Математическое выражение операции умножения.
  */
-public class Mul extends Expression{
+public class Mul extends Expression {
 
     /**
      * Левый множитель.
@@ -75,7 +75,7 @@ public class Mul extends Expression{
     @Override
     public Expression derivative(String givenVariable) {
         return new Add(new Mul(this.leftMultiplier.derivative(givenVariable), this.rightMultiplier),
-                       new Mul(this.leftMultiplier, this.rightMultiplier.derivative(givenVariable)));
+                new Mul(this.leftMultiplier, this.rightMultiplier.derivative(givenVariable)));
     }
 
     /**
@@ -87,8 +87,8 @@ public class Mul extends Expression{
      */
     @Override
     public boolean equals(Expression expr) {
-        return expr instanceof Mul &&
-                this.leftMultiplier.equals(((Mul) expr).getLeftMultiplier()) &&
-                this.rightMultiplier.equals(((Mul) expr).getRightMultiplier());
+        return expr instanceof Mul
+                && this.leftMultiplier.equals(((Mul) expr).getLeftMultiplier())
+                && this.rightMultiplier.equals(((Mul) expr).getRightMultiplier());
     }
 }
