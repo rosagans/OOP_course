@@ -1,5 +1,7 @@
 package mathexpression;
 
+import java.util.Objects;
+
 /**
  * Математическое выражение операции сложения.
  */
@@ -18,7 +20,7 @@ public class Add extends Expression {
     /**
      * Создает новое выражение сложения с указанными слагаемыми.
      *
-     * @param leftAddend левое слагаемое
+     * @param leftAddend  левое слагаемое
      * @param rightAddend правое слагаемое
      */
     public Add(Expression leftAddend, Expression rightAddend) {
@@ -59,10 +61,10 @@ public class Add extends Expression {
      *
      * @param signification контекст значений переменных
      * @return сумма операндов
-     * @throws Exception если возникла ошибка при вычислении операндов
+     * @throws WrongSignificationException если возникла ошибка при вычислении операндов
      */
     @Override
-    public int eval(String signification) throws Exception {
+    public int eval(String signification) throws WrongSignificationException {
         return this.leftAddend.eval(signification) + this.rightAddend.eval(signification);
     }
 
@@ -75,20 +77,30 @@ public class Add extends Expression {
     @Override
     public Expression derivative(String givenVariable) {
         return new Add(this.leftAddend.derivative(givenVariable),
-                this.rightAddend.derivative(givenVariable));
+            this.rightAddend.derivative(givenVariable));
     }
 
     /**
-     * Проверяет равенство данного выражения сложения другому выражению.
-     * Некоммутативно и без означивания.
+     * Проверяет равенство данного выражения сложения другому выражению. Некоммутативно и без
+     * означивания.
      *
      * @param expr выражение для сравнения
      * @return true, если выражение эквивалентны, false иначе
      */
     @Override
-    public boolean equals(Expression expr) {
+    public boolean equals(Object expr) {
         return expr instanceof Add
-                && this.leftAddend.equals(((Add) expr).getLeftAddend())
-                && this.rightAddend.equals(((Add) expr).getRightAddend());
+            && this.leftAddend.equals(((Add) expr).getLeftAddend())
+            && this.rightAddend.equals(((Add) expr).getRightAddend());
+    }
+
+    /**
+     * Считает и возвращает хэш данного выражения
+     *
+     * @return хэш код объекта
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.leftAddend, this.rightAddend, '+');
     }
 }

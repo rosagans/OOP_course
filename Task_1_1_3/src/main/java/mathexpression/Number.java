@@ -1,5 +1,7 @@
 package mathexpression;
 
+import java.util.Objects;
+
 /**
  * Математическое выражение числовой константы.
  */
@@ -67,7 +69,17 @@ public class Number extends Expression {
      * @return true, если выражение равны (равны константы)
      */
     @Override
-    public boolean equals(Expression expr) {
+    public boolean equals(Object expr) {
         return expr instanceof Number && this.value == ((Number) expr).getValue();
+    }
+
+    /**
+     * Считает и возвращает хэш данного числа
+     *
+     * @return хэш код объекта
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.value);
     }
 }

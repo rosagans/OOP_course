@@ -9,50 +9,61 @@ class DerivativeTest {
     @Test
     void diffVariable1() {
         Expression var = new Variable("x");
-        assertEquals("1", var.derivative("x").toString());
+        assertEquals(new Number(1), var.derivative("x"));
     }
 
     @Test
     void diffVariable2() {
         Expression var = new Variable("y");
-        assertEquals("0", var.derivative("x").toString());
+        assertEquals(new Number(0), var.derivative("x"));
     }
 
     @Test
     void diffNumber() {
         Expression number = new Number(100);
-        assertEquals("0", number.derivative("x").toString());
+        assertEquals(new Number(0), number.derivative("x"));
     }
 
     @Test
     void diffExpr1() {
-        // e = (3+(2*x))
+        // e.toString() = (3+(2*x))
         Expression e = new Add(new Number(3), new Mul(new Number(2),
-                new Variable("x")));
+            new Variable("x")));
 
-        assertEquals("(0+((0*x)+(2*1)))", e.derivative("x").toString());
+        // result.toString() = "(0+((0*x)+(2*1)))"
+        Expression result = new Add(new Number(0),
+            new Add(new Mul(new Number(0), new Variable("x")),
+                new Mul(new Number(2), new Number(1))));
+
+        assertEquals(result, e.derivative("x"));
     }
 
     @Test
     void diffExpr2() {
-        // e = ((190*666)-(2*xy))
-        Expression e = new Sub(
-                new Mul(new Number(190),
-                        new Number(666)),
-                new Mul(new Number(2),
-                        new Variable("xy")));
+        // e.toString() = (666-(2*xy)
+        Expression e = new Sub(new Number(666),
+            new Mul(new Number(2),
+                new Variable("xy")));
 
-        assertEquals("(((0*666)+(190*0))-((0*xy)+(2*1)))", e.derivative("xy").toString());
+        // result.toString() = (0-((0*xy)+(2*1)))
+        Expression result = new Sub(new Number(0),
+            new Add(new Mul(new Number(0), new Variable("xy")),
+                new Mul(new Number(2), new Number(1))));
+
+        assertEquals(result, e.derivative("xy"));
     }
 
     @Test
     void diffExpr3() {
-        // e = ((y-4)/3)
-        Expression e = new Div(
-                    new Sub(new Variable("y"),
-                            new Number(4)),
-                    new Number(3));
+        // e.toString() = (y/3)
+        Expression e = new Div(new Variable("y"), new Number(3));
 
-        assertEquals("((((1-0)*3)-((y-4)*0))/(3*3))", e.derivative("y").toString());
+        // result.toString() = (((1*3)-(y*0))/(3*3))
+        Expression result = new Div(
+            new Sub(new Mul(new Number(1), new Number(3)),
+                new Mul(new Variable("y"), new Number(0))),
+            new Mul(new Number(3), new Number(3)));
+
+        assertEquals(result, e.derivative("y"));
     }
 }

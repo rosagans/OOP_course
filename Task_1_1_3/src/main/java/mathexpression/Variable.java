@@ -1,5 +1,7 @@
 package mathexpression;
 
+import java.util.Objects;
+
 /**
  * Математическое выражение переменной.
  */
@@ -43,10 +45,10 @@ public class Variable extends Expression {
      *
      * @param signification строка с парами "переменная = значение", разделенными ';'
      * @return целочисленное значение переменной
-     * @throws Exception если переменная с таким именем отсутствует в контексте
+     * @throws WrongSignificationException если переменная с таким именем отсутствует в контексте
      */
     @Override
-    public int eval(String signification) throws Exception {
+    public int eval(String signification) throws WrongSignificationException {
         String[] significations = signification.split(";");
         for (int i = 0; i < significations.length; i++) {
             String curVariableSignification = significations[i].strip();
@@ -55,16 +57,16 @@ public class Variable extends Expression {
                 return Integer.parseInt(parts[2]);
             }
         }
-        throw new Exception("Wrong signification! variable ("
-                + this.label + ") didnt get any signification.");
+        throw new WrongSignificationException("Wrong signification! variable ("
+            + this.label + ") didnt get any signification.");
     }
 
     /**
      * Вычисляет производную переменной по заданной переменной дифференцирования.
      *
      * @param givenVariable имя переменной дифференцирования
-     * @return новый объект Number со значением 1, если имена совпадают;
-     * новый объект Number со значением 0, иначе
+     * @return новый объект Number со значением 1, если имена совпадают; новый объект Number со
+     * значением 0, иначе
      */
     @Override
     public Expression derivative(String givenVariable) {
@@ -82,7 +84,17 @@ public class Variable extends Expression {
      * @return true, если выражение имеют идентичные имена переменных
      */
     @Override
-    public boolean equals(Expression expr) {
+    public boolean equals(Object expr) {
         return expr instanceof Variable && this.label.equals(((Variable) expr).getLabel());
+    }
+
+    /**
+     * Считает и возвращает хэш данной переменной
+     *
+     * @return хэш код объекта
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.label);
     }
 }

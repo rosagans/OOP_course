@@ -1,5 +1,7 @@
 package mathexpression;
 
+import java.util.Objects;
+
 /**
  * Математическое выражение операции умножения.
  */
@@ -18,7 +20,7 @@ public class Mul extends Expression {
     /**
      * Создает новое выражение умножения.
      *
-     * @param leftMultiplier левый множитель
+     * @param leftMultiplier  левый множитель
      * @param rightMultiplier правый множитель
      */
     public Mul(Expression leftMultiplier, Expression rightMultiplier) {
@@ -59,10 +61,10 @@ public class Mul extends Expression {
      *
      * @param signification контекст значений переменных
      * @return результат умножения
-     * @throws Exception при ошибке вычисления операндов
+     * @throws WrongSignificationException при ошибке вычисления операндов
      */
     @Override
-    public int eval(String signification) throws Exception {
+    public int eval(String signification) throws WrongSignificationException {
         return this.leftMultiplier.eval(signification) * this.rightMultiplier.eval(signification);
     }
 
@@ -75,20 +77,29 @@ public class Mul extends Expression {
     @Override
     public Expression derivative(String givenVariable) {
         return new Add(new Mul(this.leftMultiplier.derivative(givenVariable), this.rightMultiplier),
-                new Mul(this.leftMultiplier, this.rightMultiplier.derivative(givenVariable)));
+            new Mul(this.leftMultiplier, this.rightMultiplier.derivative(givenVariable)));
     }
 
     /**
-     * Проверяет равенство выражения умножения другому выражению.
-     * Некоммутативно и без означивания.
+     * Проверяет равенство выражения умножения другому выражению. Некоммутативно и без означивания.
      *
      * @param expr выражение для сравнения
      * @return true, если выражения эквивалентны
      */
     @Override
-    public boolean equals(Expression expr) {
+    public boolean equals(Object expr) {
         return expr instanceof Mul
-                && this.leftMultiplier.equals(((Mul) expr).getLeftMultiplier())
-                && this.rightMultiplier.equals(((Mul) expr).getRightMultiplier());
+            && this.leftMultiplier.equals(((Mul) expr).getLeftMultiplier())
+            && this.rightMultiplier.equals(((Mul) expr).getRightMultiplier());
+    }
+
+    /**
+     * Считает и возвращает хэш данного выражения
+     *
+     * @return хэш код объекта
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.leftMultiplier, this.rightMultiplier, '*');
     }
 }

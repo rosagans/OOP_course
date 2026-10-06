@@ -10,9 +10,11 @@ public abstract class Expression {
      *
      * @param signification строка с контекстом переменных в формате "var1 = val1; var2 = val2;..."
      * @return целочисленный результат вычисления выражения
-     * @throws Exception если переменная не найдена или формат строки неверный
+     * @throws WrongSignificationException если вычисления невозможно (переменная не найдена, формат
+     *                                     строки неверный, деление на ноль)
+     *
      */
-    public abstract int eval(String signification) throws Exception;
+    public abstract int eval(String signification) throws WrongSignificationException;
 
     /**
      * Возвращает строковое представление математического выражения.
@@ -36,7 +38,16 @@ public abstract class Expression {
      * @param expr выражение для сравнения
      * @return true если выражения структурно равны; false в противном случае
      */
-    public abstract boolean equals(Expression expr);
+    @Override
+    public abstract boolean equals(Object expr);
+
+    /**
+     * Считает и возвращает хэш данного выражения
+     *
+     * @return хэш код объекта
+     */
+    @Override
+    public abstract int hashCode();
 
     /**
      * Выводит строковое представление выражения в стандартный поток вывода.
@@ -50,11 +61,13 @@ public abstract class Expression {
      *
      * @param string строка с математическим выражением
      * @return объект Expression, представляющий распарсенное выражение
-     * @throws Exception если строка имеет некорректный синтаксис
+     * @throws IncorrectStringExpressionException если строка имеет некорректный синтаксис
      */
-    public static Expression makeExpression(String string) throws Exception {
+    public static Expression makeExpression(String string)
+        throws IncorrectStringExpressionException {
         if (string.isEmpty()) {
-            throw new Exception("Cannot parse current expression");
+            throw new IncorrectStringExpressionException("Cannot parse current expression:" +
+                "whether given empty string or incorrect string.");
         }
 
         int indexOfOperation = findFirstOperation(string);
@@ -68,7 +81,8 @@ public abstract class Expression {
 
         if (string.startsWith("(") && string.endsWith(")")) {
             if (indexOfOperation == -1) {
-                throw new Exception("Cannot parse current expression");
+                throw new IncorrectStringExpressionException("Cannot parse current expression:" +
+                    "missing operation in '" + string + "'.");
             }
 
             String expr1 = string.substring(1, indexOfOperation);
@@ -80,12 +94,15 @@ public abstract class Expression {
                 case '+' -> new Add(makeExpression(expr1), makeExpression(expr2));
                 case '*' -> new Mul(makeExpression(expr1), makeExpression(expr2));
                 case '/' -> new Div(makeExpression(expr1), makeExpression(expr2));
-                default -> throw new Exception("Cannot parse current expression");
+                default -> throw new IncorrectStringExpressionException(
+                    "Cannot parse current expression:" +
+                        "operation '" + operation + "' is not supported.");
             };
             return finalExpr;
 
         } else {
-            throw new Exception("Cannot parse current expression");
+            throw new IncorrectStringExpressionException("Cannot parse current expression:" +
+                "string '" + string + "' should start and end with parenthesis.");
         }
     }
 
@@ -103,10 +120,23 @@ public abstract class Expression {
             } else if (string.charAt(i) == ')') {
                 parenthesisCount--;
             }
-            if (Operations.contains(string.charAt(i)) && parenthesisCount == 1) {
+            if (Expression.isOperator(string.charAt(i)) && parenthesisCount == 1) {
                 return i;
             }
         }
         return -1;
+    }
+
+    /**
+     * Проверяет, является ли данный char операцией.
+     *
+     * @param c анализируемый char
+     * @return true, если является операцией, false иначе
+     */
+    private static boolean isOperator(char c) {
+        return switch (c) {
+            case '+', '-', '*', '/' -> true;
+            default -> false;
+        };
     }
 }
