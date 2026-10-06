@@ -42,7 +42,7 @@ public abstract class Expression {
     public abstract boolean equals(Object expr);
 
     /**
-     * Считает и возвращает хэш данного выражения
+     * Считает и возвращает хэш данного выражения.
      *
      * @return хэш код объекта
      */
@@ -66,8 +66,8 @@ public abstract class Expression {
     public static Expression makeExpression(String string)
         throws IncorrectStringExpressionException {
         if (string.isEmpty()) {
-            throw new IncorrectStringExpressionException("Cannot parse current expression:" +
-                "whether given empty string or incorrect string.");
+            throw new IncorrectStringExpressionException("Cannot parse current expression:"
+                + "whether given empty string or incorrect string.");
         }
 
         int indexOfOperation = findFirstOperation(string);
@@ -81,8 +81,8 @@ public abstract class Expression {
 
         if (string.startsWith("(") && string.endsWith(")")) {
             if (indexOfOperation == -1) {
-                throw new IncorrectStringExpressionException("Cannot parse current expression:" +
-                    "missing operation in '" + string + "'.");
+                throw new IncorrectStringExpressionException("Cannot parse current expression:"
+                    + "missing operation in '" + string + "'.");
             }
 
             String expr1 = string.substring(1, indexOfOperation);
@@ -95,14 +95,14 @@ public abstract class Expression {
                 case '*' -> new Mul(makeExpression(expr1), makeExpression(expr2));
                 case '/' -> new Div(makeExpression(expr1), makeExpression(expr2));
                 default -> throw new IncorrectStringExpressionException(
-                    "Cannot parse current expression:" +
-                        "operation '" + operation + "' is not supported.");
+                    "Cannot parse current expression:"
+                        + "operation '" + operation + "' is not supported.");
             };
             return finalExpr;
 
         } else {
-            throw new IncorrectStringExpressionException("Cannot parse current expression:" +
-                "string '" + string + "' should start and end with parenthesis.");
+            throw new IncorrectStringExpressionException("Cannot parse current expression:"
+                + "string '" + string + "' should start and end with parenthesis.");
         }
     }
 
