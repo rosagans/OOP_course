@@ -2,10 +2,10 @@ package graph;
 
 import java.util.*;
 
-/**
+ /**
  * Реализация графа с помощью матрицы инцидентности.
  */
-public class GraphIncidenceMatrix extends  AbstractGraph{
+public class GraphIncidenceMatrix extends  AbstractGraph {
 
     /**
      * Матрица инцидентности.
@@ -18,7 +18,7 @@ public class GraphIncidenceMatrix extends  AbstractGraph{
     private final Map<Integer, Integer> vertexToIndex;
 
     /**
-     * Отображение индекса из матрицы инцидентности в вершину
+     * Отображение индекса из матрицы инцидентности в вершину.
      */
     private final Map<Integer, Integer> indexToVertex;
 
@@ -57,7 +57,8 @@ public class GraphIncidenceMatrix extends  AbstractGraph{
         int index;
         if (!freeListVertices.isEmpty()) {
             index = freeListVertices.removeFirst();
-            assert isRowClear(index) : "freeListVertices выдал индекс, у которого не очищена строка";
+            assert isRowClear(index) : "freeListVertices выдал индекс,"
+                + " у которого не очищена строка";
         } else {
             index = incidMatrix.size();
             if (incidMatrix.isEmpty()) {
@@ -79,8 +80,8 @@ public class GraphIncidenceMatrix extends  AbstractGraph{
         addVertex(v);
         addVertex(u);
         for (int i = 0; i < incidMatrix.getFirst().size(); i++) {
-            if (incidMatrix.get(vertexToIndex.get(v)).get(i) == 1 &&
-                incidMatrix.get(vertexToIndex.get(u)).get(i) == -1) {
+            if (incidMatrix.get(vertexToIndex.get(v)).get(i) == 1
+                && incidMatrix.get(vertexToIndex.get(u)).get(i) == -1) {
 
                 return;
             }
@@ -210,8 +211,10 @@ public class GraphIncidenceMatrix extends  AbstractGraph{
      * @return true, если строка состоит из нулей, false - иначе
      */
     private boolean isRowClear(int index) {
-        for (int val: incidMatrix.get(index)) {
-            if (val != 0) return false;
+        for (int val : incidMatrix.get(index)) {
+            if (val != 0) {
+                return false;
+            }
         }
         return true;
     }
@@ -225,7 +228,9 @@ public class GraphIncidenceMatrix extends  AbstractGraph{
      */
     private boolean isColClear(int index) {
         for (List<Integer> row : incidMatrix) {
-            if (row.get(index) != 0) return false;
+            if (row.get(index) != 0) {
+                return false;
+            }
         }
         return true;
     }

@@ -77,7 +77,8 @@ class GraphTest {
         g.deleteVertex(2);
 
         assertFalse(g.containsVertex(2));
-        assertTrue(g.getNeighbours(1).isEmpty(), "Исходящие ребра в удаленную вершину должны исчезнуть");
+        assertTrue(g.getNeighbours(1).isEmpty(), "Исходящие ребра в удаленную вершину"
+            + " должны исчезнуть");
     }
 
     @ParameterizedTest
@@ -212,7 +213,7 @@ class GraphTest {
 
         g.deleteVertex(2);
         assertTrue(g.getNeighbours(1).isEmpty());
-        
+
         g.addEdge(1, 3);
         assertEquals(List.of(3), g.getNeighbours(1));
     }

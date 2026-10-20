@@ -24,7 +24,7 @@ public class GraphAdjMatrix extends AbstractGraph {
     private final Map<Integer, Integer> vertexToIndex;
 
     /**
-     * Отображение индекса из матрицы смежности в вершину
+     * Отображение индекса из матрицы смежности в вершину.
      */
     private final Map<Integer, Integer> indexToVertex;
 
@@ -55,7 +55,8 @@ public class GraphAdjMatrix extends AbstractGraph {
         int index;
         if (!freeList.isEmpty()) {
             index = freeList.removeFirst();
-            assert isRowAndColClear(index) : "free list выдал индекс, у которого не очищены строка и столбец";
+            assert isRowAndColClear(index) : "free list выдал индекс,"
+                + " у которого не очищены строка и столбец";
         } else {
             index = adjMatrix.size();
 
@@ -63,7 +64,8 @@ public class GraphAdjMatrix extends AbstractGraph {
                 row.add(false);
             }
 
-            ArrayList<Boolean> newRow = new ArrayList<>(Collections.nCopies(adjMatrix.size() + 1, false));
+            ArrayList<Boolean> newRow = new ArrayList<>(
+                Collections.nCopies(adjMatrix.size() + 1, false));
             adjMatrix.add(newRow);
         }
         vertexToIndex.put(v, index);
@@ -107,7 +109,9 @@ public class GraphAdjMatrix extends AbstractGraph {
         ArrayList<Boolean> connections = adjMatrix.get(vertexToIndex.get(v));
         ArrayList<Integer> neighbours = new ArrayList<>();
         for (int i = 0; i < connections.size(); i++) {
-            if (connections.get(i)) neighbours.add(indexToVertex.get(i));
+            if (connections.get(i)) {
+                neighbours.add(indexToVertex.get(i));
+            }
         }
         return neighbours;
     }
@@ -140,17 +144,21 @@ public class GraphAdjMatrix extends AbstractGraph {
     }
 
     /**
-     * Проверяет, что в матрице смежности у строки и столбца под индексом idx все элементы - false
+     * Проверяет, что в матрице смежности у строки и столбца под индексом idx все элементы - fals.
      *
      * @param idx индекс проверяемых строки и столбца
      * @return true, если все элементы - false; false - иначе
      */
     private boolean isRowAndColClear(int idx) {
-        for (boolean val: adjMatrix.get(idx)) {
-            if (val) return false;
+        for (boolean val : adjMatrix.get(idx)) {
+            if (val) {
+                return false;
+            }
         }
         for (List<Boolean> row : adjMatrix) {
-            if (row.get(idx)) return false;
+            if (row.get(idx)) {
+                return false;
+            }
         }
         return true;
     }

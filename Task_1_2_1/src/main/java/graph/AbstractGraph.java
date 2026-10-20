@@ -30,7 +30,9 @@ public abstract class AbstractGraph implements Graph {
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                if (line.isEmpty()) continue;
+                if (line.isEmpty()) {
+                    continue;
+                }
 
                 String[] parts = line.split("\\s+");
                 if (parts.length != 2 || !parts[0].matches("\\d+") || !parts[1].matches("\\d+")) {
@@ -52,7 +54,7 @@ public abstract class AbstractGraph implements Graph {
      * @return Упорядоченный набор вершин, полученный с помощью сортировки
      * @throws GraphHasCycleException если в графе есть цикл
      */
-    public List<Integer> topSort(){
+    public List<Integer> topSort() {
         List<Integer> result = new LinkedList<>();
         Set<Integer> visited = new HashSet<>();
         Set<Integer> inStack = new HashSet<>();

@@ -1,5 +1,5 @@
 package graph;
-/**
+ /**
  * Ненаход вершины в графе.
  */
 public class NotFoundVertexException extends RuntimeException {

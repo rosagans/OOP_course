@@ -36,7 +36,7 @@ public class GraphAdjList extends AbstractGraph {
 
     @Override
     public void addEdge(int v, int u) {
-        if (adjList.get(v)!=null && adjList.get(v).contains(u)) {
+        if (adjList.get(v) != null && adjList.get(v).contains(u)) {
             return;
         }
         addVertex(v);
@@ -50,7 +50,7 @@ public class GraphAdjList extends AbstractGraph {
             throw new NotFoundVertexException("Вершины " + v + " нету в графе.");
         }
         adjList.remove(v);
-        for (Set<Integer> neighbours: adjList.values()) {
+        for (Set<Integer> neighbours : adjList.values()) {
             neighbours.remove(v);
         }
     }
