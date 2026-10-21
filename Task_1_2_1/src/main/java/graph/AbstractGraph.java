@@ -54,7 +54,7 @@ public abstract class AbstractGraph implements Graph {
      * @return Упорядоченный набор вершин, полученный с помощью сортировки
      * @throws GraphHasCycleException если в графе есть цикл
      */
-    public List<Integer> topSort() {
+    static public List<Integer> topSort(Graph graph) {
         List<Integer> result = new LinkedList<>();
         Set<Integer> visited = new HashSet<>();
         Set<Integer> inStack = new HashSet<>();
@@ -64,7 +64,7 @@ public abstract class AbstractGraph implements Graph {
                 visited.add(v);
                 inStack.add(v);
 
-                for (int neighbour : getNeighbours(v)) {
+                for (int neighbour : graph.getNeighbours(v)) {
                     if (inStack.contains(neighbour)) {
                         throw new GraphHasCycleException("У графа есть цикл");
                     }
@@ -78,7 +78,7 @@ public abstract class AbstractGraph implements Graph {
         }
 
         DfsClass dfsHelper = new DfsClass();
-        for (int v : getVertices()) {
+        for (int v : graph.getVertices()) {
             if (!visited.contains(v)) {
                 dfsHelper.dfs(v);
             }
@@ -118,14 +118,10 @@ public abstract class AbstractGraph implements Graph {
     @Override
     public int hashCode() {
         int totalHash = 0;
-        try {
-            for (int v : getVertices()) {
-                Set<Integer> neighbours = new HashSet<>(getNeighbours(v));
-                int vertexHash = 31 * Integer.hashCode(v) + neighbours.hashCode();
-                totalHash += vertexHash;
-            }
-        } catch (NotFoundVertexException ignored) {
-            // Исключение не случится, так как берём вершины из getVertices()
+        for (int v : getVertices()) {
+            Set<Integer> neighbours = new HashSet<>(getNeighbours(v));
+            int vertexHash = 31 * Integer.hashCode(v) + neighbours.hashCode();
+            totalHash += vertexHash;
         }
         return totalHash;
     }

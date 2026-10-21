@@ -109,7 +109,7 @@ class GraphTest {
         g.addEdge(2, 3);
         g.addEdge(1, 4);
 
-        List<Integer> order = ((AbstractGraph) g).topSort();
+        List<Integer> order = AbstractGraph.topSort(g);
 
         assertEquals(4, order.size());
         assertTrue(order.indexOf(1) < order.indexOf(2));
@@ -124,7 +124,7 @@ class GraphTest {
         g.addEdge(2, 3);
         g.addEdge(3, 1); // Цикл 1-2-3-1
 
-        assertThrows(GraphHasCycleException.class, () -> ((AbstractGraph) g).topSort());
+        assertThrows(GraphHasCycleException.class, () -> AbstractGraph.topSort(g));
     }
 
     @Test
