@@ -103,7 +103,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int)" class="member-name-link">GradeBook</a><wbr>(int&nbsp;curSemester)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Конструктор зачетки студента.</div>
+</div>
 </div>
 </section>
 </li>
@@ -174,6 +176,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(int)">
 <h3>GradeBook</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GradeBook</span><wbr><span class="parameters">(int&nbsp;curSemester)</span></div>
+<div class="block">Конструктор зачетки студента.
+ Создает и заполняет список с семестрами.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>curSemester</code> - номер текущего семестра</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -231,6 +239,7 @@ loadScripts(document, 'script');</script>
 <h3>canTransferToBudget</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">canTransferToBudget</span>()</div>
 <div class="block">Проверяет возможность перевода с платной на бюджетную форму обучения.
+
  <p>
  Условия:
  1. Отсутствие оценок "удовлетворительно" (3) за экзамены в двух последних сессиях.
@@ -246,6 +255,7 @@ loadScripts(document, 'script');</script>
 <h3>canGetRedDiploma</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">canGetRedDiploma</span>()</div>
 <div class="block">Проверяет возможность получения диплома с отличием («красного» диплома).
+
  <p>
  Условия:
  1. 75% итоговых оценок (последняя оценка по каждому предмету) — "отлично" (5).
@@ -263,6 +273,7 @@ loadScripts(document, 'script');</script>
 <h3>canGetIncreasedScholarship</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">canGetIncreasedScholarship</span>()</div>
 <div class="block">Проверяет возможность получения повышенной стипендии в текущем семестре.
+
  <p>
  Условия:
  1. Все оценки за последнюю завершенную сессию (предыдущий семестр) — "отлично" (5).
