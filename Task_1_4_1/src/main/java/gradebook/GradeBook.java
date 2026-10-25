@@ -25,6 +25,12 @@ public class GradeBook {
      */
     private Integer thesisGrade;
 
+    /**
+     * Конструктор зачетки студента.
+     * Создает и заполняет список с семестрами.
+     *
+     * @param curSemester номер текущего семестра
+     */
     public GradeBook(int curSemester) {
         this.curSemester = curSemester;
         this.semestersArray = new ArrayList<Semester>();
@@ -92,6 +98,7 @@ public class GradeBook {
 
     /**
      * Проверяет возможность перевода с платной на бюджетную форму обучения.
+     *
      * <p>
      * Условия:
      * 1. Отсутствие оценок "удовлетворительно" (3) за экзамены в двух последних сессиях.
@@ -100,7 +107,9 @@ public class GradeBook {
      * @return true, если перевод возможен, иначе false
      */
     public boolean canTransferToBudget() {
-        if (curSemester < 2) return false;
+        if (curSemester < 2) {
+            return false;
+        }
 
         int startSem = Math.max(0, curSemester - 2);
         List<Semester> lastTwoSemesters = semestersArray.subList(startSem, curSemester);
@@ -114,6 +123,7 @@ public class GradeBook {
 
     /**
      * Проверяет возможность получения диплома с отличием («красного» диплома).
+     *
      * <p>
      * Условия:
      * 1. 75% итоговых оценок (последняя оценка по каждому предмету) — "отлично" (5).
@@ -149,7 +159,9 @@ public class GradeBook {
                 (oldGrade, newGrade) -> newGrade
             ));
 
-        if (finalGrades.isEmpty()) return false;
+        if (finalGrades.isEmpty()) {
+            return false;
+        }
 
         boolean noSatisfactory = finalGrades.values().stream().noneMatch(g -> g == 3);
         long excellentCount = finalGrades.values().stream().filter(g -> g == 5).count();
@@ -160,6 +172,7 @@ public class GradeBook {
 
     /**
      * Проверяет возможность получения повышенной стипендии в текущем семестре.
+     *
      * <p>
      * Условия:
      * 1. Все оценки за последнюю завершенную сессию (предыдущий семестр) — "отлично" (5).
@@ -168,8 +181,9 @@ public class GradeBook {
      * @return true, если студент претендует на повышенную стипендию, иначе false
      */
     public boolean canGetIncreasedScholarship() {
-        if (curSemester <= 1) return false;
-
+        if (curSemester <= 1) {
+            return false;
+        }
         Semester lastSemester = semestersArray.get(curSemester - 2);
 
         boolean allExcellent = Stream.concat(

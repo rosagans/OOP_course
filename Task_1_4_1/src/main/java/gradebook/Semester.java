@@ -2,7 +2,7 @@ package gradebook;
 
 import java.util.*;
 /**
- * Класс объекта семестра
+ * Класс объекта семестра.
  */
 public class Semester {
 
@@ -45,7 +45,16 @@ public class Semester {
     private final List<PairSubjectBool> regularCreditList;
 
 
-
+    /**
+     * Конструктор семестра.
+     * По типу семестра создает пустые коллекции с заданной capacity:
+     * examsGradeList - список экзаменов и оценок за них,
+     * diffCreditGradeList - список дифф зачетов и оценок за них
+     * regularCreditList - список зачетов и наличие у их.
+     *
+     *
+     * @param semType тип семестра(порядковый номер)
+     */
     public Semester(SemesterType semType) {
         this.semType = semType;
         this.examsGradeList = new ArrayList<>(semType.getNumOfExams());
@@ -75,8 +84,8 @@ public class Semester {
      */
     public void addDiffCreditGrade(String subjectName, Integer grade) {
         if (diffCreditGradeList.size() >= semType.getNumOfDiffCredits()) {
-            throw new IllegalStateException("Максимум " + semType.getNumOfDiffCredits() + " дифф зачетов в "
-                + semType.getId() + "семестре");
+            throw new IllegalStateException("Максимум " + semType.getNumOfDiffCredits()
+                + " дифф зачетов в " + semType.getId() + "семестре");
         }
         diffCreditGradeList.add(new PairSubjectGrade(subjectName, grade));
     }
@@ -90,13 +99,15 @@ public class Semester {
      */
     public void addRegularCredit(String subjectName, boolean hasCredit) {
         if (regularCreditList.size() >= semType.getNumOfRegularCredits()) {
-            throw new IllegalStateException("Максимум " + semType.getNumOfRegularCredits() + " зачетов в "
-                + semType.getId() + "семестре");
+            throw new IllegalStateException("Максимум " + semType.getNumOfRegularCredits()
+                + " зачетов в " + semType.getId() + "семестре");
         }
         regularCreditList.add(new PairSubjectBool(subjectName, hasCredit));
     }
 
     /**
+     * Геттер списка с экзаменами и оценками за них.
+     *
      * @return список оценок за экзамены
      */
     public List<PairSubjectGrade> getExamsGradeList() {
@@ -104,6 +115,8 @@ public class Semester {
     }
 
     /**
+     * Геттер списка с дифф зачетами и оценками за них.
+     *
      * @return список оценок за дифференцированные зачеты
      */
     public List<PairSubjectGrade> getDiffCreditGradeList() {
@@ -111,6 +124,8 @@ public class Semester {
     }
 
     /**
+     * Геттер списка с зачетами и их наличием.
+     *
      * @return список результатов обычных зачетов
      */
     public List<PairSubjectBool> getRegularCreditList() {

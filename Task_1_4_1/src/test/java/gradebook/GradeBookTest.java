@@ -24,7 +24,7 @@ public class GradeBookTest {
     @Test
     public void testSemesterLimitsThrowsException_NoExamsInEighthSemester() {
         GradeBook gb = new GradeBook(8);
-        Semester sem8 = gb.initSemestersArrayForTest().get(7); // Восьмой семестр: EIGHTH(8, 0, 4, 1)
+        Semester sem8 = gb.initSemestersArrayForTest().get(7);
 
         // Пытаемся добавить экзамен туда, где лимит 0
         IllegalStateException exception = assertThrows(IllegalStateException.class, () -> {

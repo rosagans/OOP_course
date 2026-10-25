@@ -1,5 +1,8 @@
 package gradebook;
 
+/**
+ * Перечисление порядковых номеров семестров.
+ */
 public enum SemesterType {
     FIRST(1, 3, 3, 3),
     SECOND(2, 3, 3, 2),
@@ -72,7 +75,7 @@ public enum SemesterType {
     }
 
     /**
-     * Геттер номера семестра
+     * Геттер номера семестра.
      *
      * @return номер семестра
      */
