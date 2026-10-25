@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"gradebook","l":"GradeBook"},{"p":"gradebook","l":"Semester.PairSubjectBool"},{"p":"gradebook","l":"Semester.PairSubjectGrade"},{"p":"gradebook","l":"Semester"},{"p":"gradebook","l":"SemesterType"}];updateSearchResults();
