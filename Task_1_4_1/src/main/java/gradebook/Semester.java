@@ -7,129 +7,36 @@ import java.util.*;
 public class Semester {
 
     /**
-     * Пара значений: название предмета и оценка за него.
-     *
-     * @param subject название предмета
-     * @param grade оценка за него
+     * List, состоящий из пар: (предмет, оценка),
+     * где предмет это либо экзамен, либо дифф зачет, либо ВКР, либо зачет.
+     * В случае обычного зачета оценка = сдал или не сдал.
      */
-    public record PairSubjectGrade(String subject, Integer grade) {}
+    private final List<GradeRecord> RecordList;
 
     /**
-     * Пара значений: название предмета и оценка за него.
-     *
-     * @param subject название предмета
-     * @param hasCredit true, если есть зачет по этому предмету, false - иначе
+     * Конструктор объекта.
+     * Создает пустую коллекцию записей
      */
-    public record PairSubjectBool(String subject, Boolean hasCredit) {}
-
-
-    /**
-     *  Тип семестра.
-     */
-    private final SemesterType semType;
-
-    /**
-     *  List из пар: (экзамен, оценка).
-     */
-    private final List<PairSubjectGrade> examsGradeList;
-
-    /**
-     *  List из пар: (дифф зачет, оценка).
-     */
-    private final List<PairSubjectGrade> diffCreditGradeList;
-
-    /**
-     *  List из пар: (зачет, наличие).
-     *  т.е true, если есть зачет, false - иначе
-     */
-    private final List<PairSubjectBool> regularCreditList;
-
-
-    /**
-     * Конструктор семестра.
-     * По типу семестра создает пустые коллекции с заданной capacity:
-     * examsGradeList - список экзаменов и оценок за них,
-     * diffCreditGradeList - список дифф зачетов и оценок за них
-     * regularCreditList - список зачетов и наличие у их.
-     *
-     *
-     * @param semType тип семестра(порядковый номер)
-     */
-    public Semester(SemesterType semType) {
-        this.semType = semType;
-        this.examsGradeList = new ArrayList<>(semType.getNumOfExams());
-        this.diffCreditGradeList = new ArrayList<>(semType.getNumOfDiffCredits());
-        this.regularCreditList = new ArrayList<>(semType.getNumOfRegularCredits());
+    public Semester() {
+        this.RecordList = new ArrayList<>();
     }
 
     /**
-     * Добавляет пару: (экзамен, оценка).
+     * Добавление новой записи в RecordList;
      *
-     * @param subjectName предмет
-     * @param grade оценка
+     * @param record новая запись
      */
-    public void addExamGrade(String subjectName, Integer grade) {
-        if (examsGradeList.size() >= semType.getNumOfExams()) {
-            throw new IllegalStateException("Максимум " + semType.getNumOfExams() + " экзаменов в "
-                + semType.getId() + "семестре");
-        }
-        examsGradeList.add(new PairSubjectGrade(subjectName, grade));
+    public void addRecord(GradeRecord record) {
+        RecordList.add(record);
     }
 
     /**
-     * Добавляет пару: (дифф зачет, оценка).
+     * Геттер RecordList.
      *
-     * @param subjectName предмет
-     * @param grade оценка
-     */
-    public void addDiffCreditGrade(String subjectName, Integer grade) {
-        if (diffCreditGradeList.size() >= semType.getNumOfDiffCredits()) {
-            throw new IllegalStateException("Максимум " + semType.getNumOfDiffCredits()
-                + " дифф зачетов в " + semType.getId() + "семестре");
-        }
-        diffCreditGradeList.add(new PairSubjectGrade(subjectName, grade));
-    }
-
-    /**
-     * Добавляет пару: (зачет, наличие).
-     * т.е true, если есть зачет, false - иначе
      *
-     * @param subjectName предмет
-     * @param hasCredit true, если зачет получен, false - иначе
+     * @return неизменяемый список RecordList
      */
-    public void addRegularCredit(String subjectName, boolean hasCredit) {
-        if (regularCreditList.size() >= semType.getNumOfRegularCredits()) {
-            throw new IllegalStateException("Максимум " + semType.getNumOfRegularCredits()
-                + " зачетов в " + semType.getId() + "семестре");
-        }
-        regularCreditList.add(new PairSubjectBool(subjectName, hasCredit));
+    public  List<GradeRecord> getRecordList() {
+        return Collections.unmodifiableList(RecordList);
     }
-
-    /**
-     * Геттер списка с экзаменами и оценками за них.
-     *
-     * @return список оценок за экзамены
-     */
-    public List<PairSubjectGrade> getExamsGradeList() {
-        return examsGradeList;
-    }
-
-    /**
-     * Геттер списка с дифф зачетами и оценками за них.
-     *
-     * @return список оценок за дифференцированные зачеты
-     */
-    public List<PairSubjectGrade> getDiffCreditGradeList() {
-        return diffCreditGradeList;
-    }
-
-    /**
-     * Геттер списка с зачетами и их наличием.
-     *
-     * @return список результатов обычных зачетов
-     */
-    public List<PairSubjectBool> getRegularCreditList() {
-        return regularCreditList;
-    }
-
 }

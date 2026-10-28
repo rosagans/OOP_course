@@ -20,51 +20,28 @@ public class GradeBook {
     private List<Semester> semestersArray;
 
     /**
-     * Оценка за выпускную квалификационную работу (ВКР).
-     * Может быть null, если еще не защищена.
-     */
-    private Integer thesisGrade;
-
-    /**
      * Конструктор зачетки студента.
-     * Создает и заполняет список с семестрами.
+     * Создает список семестров до curSemester включительно
      *
      * @param curSemester номер текущего семестра
      */
     public GradeBook(int curSemester) {
+        if (curSemester < 1 || curSemester > 8) {
+            throw new IllegalStateException("Попытка создать зачетку с текущим семестром: " + curSemester);
+        }
         this.curSemester = curSemester;
         this.semestersArray = new ArrayList<Semester>();
-        initSemestersArray();
-    }
-
-    /**
-     * Инициализирует массив состоящий из объектов семестров.
-     * до текущего семестра включительно
-     *
-     */
-    public void initSemestersArray() {
-        SemesterType[] types = SemesterType.values();
         for (int i = 0; i < curSemester; i++) {
-            semestersArray.add(new Semester(types[i]));
+            semestersArray.add(new Semester());
         }
     }
 
-    /**
-     * Геттер массива семестров для тестов.
-     *
-     * @return массив семестров
-     */
-    public List<Semester> initSemestersArrayForTest() {
-        return semestersArray;
-    }
-
-    /**
-     * Устанавливает оценку за квалификационную работу (ВКР).
-     *
-     * @param grade оценка за ВКР
-     */
-    public void setThesisGrade(Integer grade) {
-        this.thesisGrade = grade;
+    public GradeBook(int curSemester, List<Semester> semestersArray) {
+        if (curSemester < 1 || curSemester > 8) {
+            throw new IllegalStateException("Попытка создать зачетку с текущим семестром: " + curSemester);
+        }
+        this.curSemester = curSemester;
+        this.semestersArray = semestersArray;
     }
 
     /**
@@ -75,13 +52,12 @@ public class GradeBook {
      */
     public double calculateAverageGrade() {
         return semestersArray.stream()
-            .flatMap(sem -> Stream.concat(
-                sem.getExamsGradeList().stream(),
-                sem.getDiffCreditGradeList().stream()
-            ))
-            .mapToInt(Semester.PairSubjectGrade::grade)
+            .flatMap(sem -> sem.getRecordList().stream()).
+            filter(record -> record instanceof ExamRecord || record instanceof  DiffCreditRecord)
+            .mapToInt(GradeRecord::getGrade)
             .average()
             .orElse(0.0);
+
     }
 
     /**
@@ -91,9 +67,11 @@ public class GradeBook {
      * @return true, если все зачеты имеют статус "сдан" (true), иначе false
      */
     private boolean allCreditsPassed(List<Semester> semesters) {
+
         return semesters.stream()
-            .flatMap(sem -> sem.getRegularCreditList().stream())
-            .allMatch(Semester.PairSubjectBool::hasCredit);
+            .flatMap(sem -> sem.getRecordList().stream())
+            .filter(record -> record instanceof RegularCreditRecord)
+            .allMatch(GradeRecord::isPassed);
     }
 
     /**
@@ -115,9 +93,9 @@ public class GradeBook {
         List<Semester> lastTwoSemesters = semestersArray.subList(startSem, curSemester);
 
         boolean noSatisfactoryInExams = lastTwoSemesters.stream()
-            .flatMap(sem -> sem.getExamsGradeList().stream())
-            .noneMatch(pair -> pair.grade() == 3);
-
+            .flatMap(sem -> sem.getRecordList().stream())
+            .filter(record -> record instanceof ExamRecord)
+            .noneMatch(GradeRecord::isSatisfactory);
         return noSatisfactoryInExams && allCreditsPassed(lastTwoSemesters);
     }
 
@@ -134,37 +112,39 @@ public class GradeBook {
      * @return true, если диплом с отличием достижим или уже получен, иначе false
      */
     public boolean canGetRedDiploma() {
-        // Если это выпускной курс, то оценка за ВКР уже должна быть 5
-        if (curSemester == 8 && (thesisGrade == null || thesisGrade != 5)) {
-            return false;
-        }
-
-        // Базовое условие: долгов по обычным зачетам быть не должно
         if (!allCreditsPassed(semestersArray)) {
             return false;
         }
 
-        /*
-         * Собираем последние оценки. Если предмет идет несколько семестров,
-         * в Map останется только самая последняя (итоговая) оценка.
-         */
-        Map<String, Integer> finalGrades = semestersArray.stream()
-            .flatMap(sem -> Stream.concat(
-                sem.getExamsGradeList().stream(),
-                sem.getDiffCreditGradeList().stream()
-            ))
+        Map<String, GradeRecord> finalGrades = semestersArray.stream()
+            .flatMap(sem -> sem.getRecordList().stream())
+            .filter(rec -> rec instanceof ExamRecord || rec instanceof DiffCreditRecord || rec instanceof VkrRecord)
             .collect(Collectors.toMap(
-                Semester.PairSubjectGrade::subject,
-                Semester.PairSubjectGrade::grade,
-                (oldGrade, newGrade) -> newGrade
+                GradeRecord::getSubjectName,
+                rec -> rec,
+                (oldRec, newRec) -> newRec // Оставляем самую последнюю (итоговую) оценку
             ));
+
+        if (curSemester == 8) {
+            boolean vkrExcellent = finalGrades.values().stream()
+                .filter(rec -> rec instanceof VkrRecord)
+                .anyMatch(GradeRecord::isExcellent);
+            if (!vkrExcellent) {
+                return false;
+            }
+        }
 
         if (finalGrades.isEmpty()) {
             return false;
         }
 
-        boolean noSatisfactory = finalGrades.values().stream().noneMatch(g -> g == 3);
-        long excellentCount = finalGrades.values().stream().filter(g -> g == 5).count();
+        boolean noSatisfactory = finalGrades.values().stream()
+            .noneMatch(rec -> rec.getGrade() <= 3);
+
+        long excellentCount = finalGrades.values().stream()
+            .filter(GradeRecord::isExcellent)
+            .count();
+
         double excellentPercentage = (double) excellentCount / finalGrades.size();
 
         return noSatisfactory && (excellentPercentage >= 0.75);
@@ -186,12 +166,9 @@ public class GradeBook {
         }
         Semester lastSemester = semestersArray.get(curSemester - 2);
 
-        boolean allExcellent = Stream.concat(
-                lastSemester.getExamsGradeList().stream(),
-                lastSemester.getDiffCreditGradeList().stream()
-            )
-            .allMatch(pair -> pair.grade() == 5);
-
+        boolean allExcellent = lastSemester.getRecordList().stream()
+            .filter(record -> record instanceof ExamRecord || record instanceof  DiffCreditRecord)
+            .allMatch(GradeRecord::isExcellent);
         return allExcellent && allCreditsPassed(List.of(lastSemester));
     }
 }
