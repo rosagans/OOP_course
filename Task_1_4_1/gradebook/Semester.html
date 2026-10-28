@@ -36,7 +36,7 @@ loadScripts(document, 'script');</script>
 <li>
 <p>Summary:</p>
 <ul>
-<li><a href="#nested-class-summary">Nested</a></li>
+<li>Nested</li>
 <li>Field</li>
 <li><a href="#constructor-summary">Constr</a></li>
 <li><a href="#method-summary">Method</a></li>
@@ -56,7 +56,7 @@ loadScripts(document, 'script');</script>
 <div id="navbar-sub-list">
 <ul class="sub-nav-list">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested-class-summary">Nested</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor-summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method-summary">Method</a></li>
@@ -94,28 +94,6 @@ loadScripts(document, 'script');</script>
 </section>
 <section class="summary">
 <ul class="summary-list">
-<!-- ======== NESTED CLASS SUMMARY ======== -->
-<li>
-<section class="nested-class-summary" id="nested-class-summary">
-<h2>Nested Class Summary</h2>
-<div class="caption"><span>Nested Classes</span></div>
-<div class="summary-table three-column-summary">
-<div class="table-header col-first">Modifier and Type</div>
-<div class="table-header col-second">Class</div>
-<div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code>static final record&nbsp;</code></div>
-<div class="col-second even-row-color"><code><a href="Semester.PairSubjectBool.html" class="type-name-link" title="class in gradebook">Semester.PairSubjectBool</a></code></div>
-<div class="col-last even-row-color">
-<div class="block">Пара значений: название предмета и оценка за него.</div>
-</div>
-<div class="col-first odd-row-color"><code>static final record&nbsp;</code></div>
-<div class="col-second odd-row-color"><code><a href="Semester.PairSubjectGrade.html" class="type-name-link" title="class in gradebook">Semester.PairSubjectGrade</a></code></div>
-<div class="col-last odd-row-color">
-<div class="block">Пара значений: название предмета и оценка за него.</div>
-</div>
-</div>
-</section>
-</li>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <li>
 <section class="constructor-summary" id="constructor-summary">
@@ -124,9 +102,9 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(gradebook.SemesterType)" class="member-name-link">Semester</a><wbr>(<a href="SemesterType.html" title="enum class in gradebook">SemesterType</a>&nbsp;semType)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">Semester</a>()</code></div>
 <div class="col-last even-row-color">
-<div class="block">Конструктор семестра.</div>
+<div class="block">Конструктор объекта.</div>
 </div>
 </div>
 </section>
@@ -143,37 +121,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addDiffCreditGrade(java.lang.String,java.lang.Integer)" class="member-name-link">addDiffCreditGrade</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName,
- <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;grade)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addRecord(gradebook.GradeRecord)" class="member-name-link">addRecord</a><wbr>(<a href="GradeRecord.html" title="class in gradebook">GradeRecord</a>&nbsp;record)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Добавляет пару: (дифф зачет, оценка).</div>
+<div class="block">Добавление новой записи в RecordList;</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addExamGrade(java.lang.String,java.lang.Integer)" class="member-name-link">addExamGrade</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName,
- <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;grade)</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="GradeRecord.html" title="class in gradebook">GradeRecord</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRecordList()" class="member-name-link">getRecordList</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Добавляет пару: (экзамен, оценка).</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addRegularCredit(java.lang.String,boolean)" class="member-name-link">addRegularCredit</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName,
- boolean&nbsp;hasCredit)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Добавляет пару: (зачет, наличие).</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="Semester.PairSubjectGrade.html" title="class in gradebook">Semester.PairSubjectGrade</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDiffCreditGradeList()" class="member-name-link">getDiffCreditGradeList</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Геттер списка с дифф зачетами и оценками за них.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="Semester.PairSubjectGrade.html" title="class in gradebook">Semester.PairSubjectGrade</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getExamsGradeList()" class="member-name-link">getExamsGradeList</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Геттер списка с экзаменами и оценками за них.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="Semester.PairSubjectBool.html" title="class in gradebook">Semester.PairSubjectBool</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRegularCreditList()" class="member-name-link">getRegularCreditList</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Геттер списка с зачетами и их наличием.</div>
+<div class="block">Геттер RecordList.</div>
 </div>
 </div>
 </div>
@@ -193,18 +148,11 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(gradebook.SemesterType)">
+<section class="detail" id="&lt;init&gt;()">
 <h3>Semester</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Semester</span><wbr><span class="parameters">(<a href="SemesterType.html" title="enum class in gradebook">SemesterType</a>&nbsp;semType)</span></div>
-<div class="block">Конструктор семестра.
- По типу семестра создает пустые коллекции с заданной capacity:
- examsGradeList - список экзаменов и оценок за них,
- diffCreditGradeList - список дифф зачетов и оценок за них
- regularCreditList - список зачетов и наличие у их.</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>semType</code> - тип семестра(порядковый номер)</dd>
-</dl>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Semester</span>()</div>
+<div class="block">Конструктор объекта.
+ Создает пустую коллекцию записей</div>
 </section>
 </li>
 </ul>
@@ -216,75 +164,24 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="addExamGrade(java.lang.String,java.lang.Integer)">
-<h3>addExamGrade</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addExamGrade</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName,
- <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;grade)</span></div>
-<div class="block">Добавляет пару: (экзамен, оценка).</div>
+<section class="detail" id="addRecord(gradebook.GradeRecord)">
+<h3>addRecord</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addRecord</span><wbr><span class="parameters">(<a href="GradeRecord.html" title="class in gradebook">GradeRecord</a>&nbsp;record)</span></div>
+<div class="block">Добавление новой записи в RecordList;</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>subjectName</code> - предмет</dd>
-<dd><code>grade</code> - оценка</dd>
+<dd><code>record</code> - новая запись</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="addDiffCreditGrade(java.lang.String,java.lang.Integer)">
-<h3>addDiffCreditGrade</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addDiffCreditGrade</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName,
- <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;grade)</span></div>
-<div class="block">Добавляет пару: (дифф зачет, оценка).</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>subjectName</code> - предмет</dd>
-<dd><code>grade</code> - оценка</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="addRegularCredit(java.lang.String,boolean)">
-<h3>addRegularCredit</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addRegularCredit</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName,
- boolean&nbsp;hasCredit)</span></div>
-<div class="block">Добавляет пару: (зачет, наличие).
- т.е true, если есть зачет, false - иначе</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>subjectName</code> - предмет</dd>
-<dd><code>hasCredit</code> - true, если зачет получен, false - иначе</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="getExamsGradeList()">
-<h3>getExamsGradeList</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Semester.PairSubjectGrade.html" title="class in gradebook">Semester.PairSubjectGrade</a>&gt;</span>&nbsp;<span class="element-name">getExamsGradeList</span>()</div>
-<div class="block">Геттер списка с экзаменами и оценками за них.</div>
+<section class="detail" id="getRecordList()">
+<h3>getRecordList</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="GradeRecord.html" title="class in gradebook">GradeRecord</a>&gt;</span>&nbsp;<span class="element-name">getRecordList</span>()</div>
+<div class="block">Геттер RecordList.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>список оценок за экзамены</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="getDiffCreditGradeList()">
-<h3>getDiffCreditGradeList</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Semester.PairSubjectGrade.html" title="class in gradebook">Semester.PairSubjectGrade</a>&gt;</span>&nbsp;<span class="element-name">getDiffCreditGradeList</span>()</div>
-<div class="block">Геттер списка с дифф зачетами и оценками за них.</div>
-<dl class="notes">
-<dt>Returns:</dt>
-<dd>список оценок за дифференцированные зачеты</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="getRegularCreditList()">
-<h3>getRegularCreditList</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Semester.PairSubjectBool.html" title="class in gradebook">Semester.PairSubjectBool</a>&gt;</span>&nbsp;<span class="element-name">getRegularCreditList</span>()</div>
-<div class="block">Геттер списка с зачетами и их наличием.</div>
-<dl class="notes">
-<dt>Returns:</dt>
-<dd>список результатов обычных зачетов</dd>
+<dd>неизменяемый список RecordList</dd>
 </dl>
 </section>
 </li>

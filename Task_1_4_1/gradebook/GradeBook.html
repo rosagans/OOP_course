@@ -106,6 +106,9 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">
 <div class="block">Конструктор зачетки студента.</div>
 </div>
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(int,java.util.List)" class="member-name-link">GradeBook</a><wbr>(int&nbsp;curSemester,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Semester.html" title="class in gradebook">Semester</a>&gt;&nbsp;semestersArray)</code></div>
+<div class="col-last odd-row-color">&nbsp;</div>
 </div>
 </section>
 </li>
@@ -140,21 +143,6 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Проверяет возможность перевода с платной на бюджетную форму обучения.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#initSemestersArray()" class="member-name-link">initSemestersArray</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Инициализирует массив состоящий из объектов семестров.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="Semester.html" title="class in gradebook">Semester</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#initSemestersArrayForTest()" class="member-name-link">initSemestersArrayForTest</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Геттер массива семестров для тестов.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setThesisGrade(java.lang.Integer)" class="member-name-link">setThesisGrade</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;grade)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Устанавливает оценку за квалификационную работу (ВКР).</div>
-</div>
 </div>
 </div>
 </div>
@@ -177,11 +165,18 @@ loadScripts(document, 'script');</script>
 <h3>GradeBook</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GradeBook</span><wbr><span class="parameters">(int&nbsp;curSemester)</span></div>
 <div class="block">Конструктор зачетки студента.
- Создает и заполняет список с семестрами.</div>
+ Создает список семестров до curSemester включительно</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>curSemester</code> - номер текущего семестра</dd>
 </dl>
+</section>
+</li>
+<li>
+<section class="detail" id="&lt;init&gt;(int,java.util.List)">
+<h3>GradeBook</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GradeBook</span><wbr><span class="parameters">(int&nbsp;curSemester,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Semester.html" title="class in gradebook">Semester</a>&gt;&nbsp;semestersArray)</span></div>
 </section>
 </li>
 </ul>
@@ -192,36 +187,6 @@ loadScripts(document, 'script');</script>
 <section class="method-details" id="method-detail">
 <h2>Method Details</h2>
 <ul class="member-list">
-<li>
-<section class="detail" id="initSemestersArray()">
-<h3>initSemestersArray</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">initSemestersArray</span>()</div>
-<div class="block">Инициализирует массив состоящий из объектов семестров.
- до текущего семестра включительно</div>
-</section>
-</li>
-<li>
-<section class="detail" id="initSemestersArrayForTest()">
-<h3>initSemestersArrayForTest</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Semester.html" title="class in gradebook">Semester</a>&gt;</span>&nbsp;<span class="element-name">initSemestersArrayForTest</span>()</div>
-<div class="block">Геттер массива семестров для тестов.</div>
-<dl class="notes">
-<dt>Returns:</dt>
-<dd>массив семестров</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="setThesisGrade(java.lang.Integer)">
-<h3>setThesisGrade</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setThesisGrade</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;grade)</span></div>
-<div class="block">Устанавливает оценку за квалификационную работу (ВКР).</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>grade</code> - оценка за ВКР</dd>
-</dl>
-</section>
-</li>
 <li>
 <section class="detail" id="calculateAverageGrade()">
 <h3>calculateAverageGrade</h3>

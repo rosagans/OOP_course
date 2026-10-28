@@ -48,20 +48,12 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
-<dt><a href="gradebook/Semester.html#addDiffCreditGrade(java.lang.String,java.lang.Integer)" class="member-name-link">addDiffCreditGrade(String, Integer)</a> - Method in class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
+<dt><a href="gradebook/Semester.html#addRecord(gradebook.GradeRecord)" class="member-name-link">addRecord(GradeRecord)</a> - Method in class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
 <dd>
-<div class="block">Добавляет пару: (дифф зачет, оценка).</div>
-</dd>
-<dt><a href="gradebook/Semester.html#addExamGrade(java.lang.String,java.lang.Integer)" class="member-name-link">addExamGrade(String, Integer)</a> - Method in class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
-<dd>
-<div class="block">Добавляет пару: (экзамен, оценка).</div>
-</dd>
-<dt><a href="gradebook/Semester.html#addRegularCredit(java.lang.String,boolean)" class="member-name-link">addRegularCredit(String, boolean)</a> - Method in class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
-<dd>
-<div class="block">Добавляет пару: (зачет, наличие).</div>
+<div class="block">Добавление новой записи в RecordList;</div>
 </dd>
 </dl>
 <h2 class="title" id="I:C">C</h2>
@@ -83,61 +75,60 @@ loadScripts(document, 'script');</script>
 <div class="block">Проверяет возможность перевода с платной на бюджетную форму обучения.</div>
 </dd>
 </dl>
+<h2 class="title" id="I:D">D</h2>
+<dl class="index">
+<dt><a href="gradebook/DiffCreditRecord.html" class="type-name-link" title="class in gradebook">DiffCreditRecord</a> - Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
+<dd>
+<div class="block">Класс, представляющий пару: (дифф зачет, оценка)</div>
+</dd>
+<dt><a href="gradebook/DiffCreditRecord.html#%3Cinit%3E(java.lang.String,gradebook.Grade)" class="member-name-link">DiffCreditRecord(String, Grade)</a> - Constructor for class gradebook.<a href="gradebook/DiffCreditRecord.html" title="class in gradebook">DiffCreditRecord</a></dt>
+<dd>
+<div class="block">Конструктор объекта.</div>
+</dd>
+</dl>
 <h2 class="title" id="I:E">E</h2>
 <dl class="index">
-<dt><a href="gradebook/SemesterType.html#EIGHTH" class="member-name-link">EIGHTH</a> - Enum constant in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/Semester.PairSubjectBool.html#equals(java.lang.Object)" class="member-name-link">equals(Object)</a> - Method in record class gradebook.<a href="gradebook/Semester.PairSubjectBool.html" title="class in gradebook">Semester.PairSubjectBool</a></dt>
+<dt><a href="gradebook/ExamRecord.html" class="type-name-link" title="class in gradebook">ExamRecord</a> - Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
 <dd>
-<div class="block">Indicates whether some other object is "equal to" this one.</div>
+<div class="block">Класс представляющий пару: (экзамен, оценка)</div>
 </dd>
-<dt><a href="gradebook/Semester.PairSubjectGrade.html#equals(java.lang.Object)" class="member-name-link">equals(Object)</a> - Method in record class gradebook.<a href="gradebook/Semester.PairSubjectGrade.html" title="class in gradebook">Semester.PairSubjectGrade</a></dt>
+<dt><a href="gradebook/ExamRecord.html#%3Cinit%3E(java.lang.String,gradebook.Grade)" class="member-name-link">ExamRecord(String, Grade)</a> - Constructor for class gradebook.<a href="gradebook/ExamRecord.html" title="class in gradebook">ExamRecord</a></dt>
 <dd>
-<div class="block">Indicates whether some other object is "equal to" this one.</div>
+<div class="block">Конструктор объекта.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:F">F</h2>
 <dl class="index">
-<dt><a href="gradebook/SemesterType.html#FIFTH" class="member-name-link">FIFTH</a> - Enum constant in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
+<dt><a href="gradebook/Grade.html#FIVE" class="member-name-link">FIVE</a> - Enum constant in enum class gradebook.<a href="gradebook/Grade.html" title="enum class in gradebook">Grade</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="gradebook/SemesterType.html#FIRST" class="member-name-link">FIRST</a> - Enum constant in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/SemesterType.html#FOURTH" class="member-name-link">FOURTH</a> - Enum constant in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
+<dt><a href="gradebook/Grade.html#FOUR" class="member-name-link">FOUR</a> - Enum constant in enum class gradebook.<a href="gradebook/Grade.html" title="enum class in gradebook">Grade</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
-<dt><a href="gradebook/Semester.html#getDiffCreditGradeList()" class="member-name-link">getDiffCreditGradeList()</a> - Method in class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
+<dt><a href="gradebook/DiffCreditRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class gradebook.<a href="gradebook/DiffCreditRecord.html" title="class in gradebook">DiffCreditRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/ExamRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class gradebook.<a href="gradebook/ExamRecord.html" title="class in gradebook">ExamRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/GradeRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
 <dd>
-<div class="block">Геттер списка с дифф зачетами и оценками за них.</div>
+<div class="block">Геттер оценки за предмет.</div>
 </dd>
-<dt><a href="gradebook/Semester.html#getExamsGradeList()" class="member-name-link">getExamsGradeList()</a> - Method in class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
+<dt><a href="gradebook/RegularCreditRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class gradebook.<a href="gradebook/RegularCreditRecord.html" title="class in gradebook">RegularCreditRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/VkrRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class gradebook.<a href="gradebook/VkrRecord.html" title="class in gradebook">VkrRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/Semester.html#getRecordList()" class="member-name-link">getRecordList()</a> - Method in class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
 <dd>
-<div class="block">Геттер списка с экзаменами и оценками за них.</div>
+<div class="block">Геттер RecordList.</div>
 </dd>
-<dt><a href="gradebook/SemesterType.html#getId()" class="member-name-link">getId()</a> - Method in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
+<dt><a href="gradebook/GradeRecord.html#getSubjectName()" class="member-name-link">getSubjectName()</a> - Method in class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
 <dd>
-<div class="block">Геттер номера семестра.</div>
+<div class="block">Геттер названия предмета.</div>
 </dd>
-<dt><a href="gradebook/SemesterType.html#getNumOfDiffCredits()" class="member-name-link">getNumOfDiffCredits()</a> - Method in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
+<dt><a href="gradebook/Grade.html" class="type-name-link" title="enum class in gradebook">Grade</a> - Enum Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
 <dd>
-<div class="block">Геттер количества дифф зачетов в данном семестре.</div>
-</dd>
-<dt><a href="gradebook/SemesterType.html#getNumOfExams()" class="member-name-link">getNumOfExams()</a> - Method in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
-<dd>
-<div class="block">Геттер количества экзаменов в данном семестре.</div>
-</dd>
-<dt><a href="gradebook/SemesterType.html#getNumOfRegularCredits()" class="member-name-link">getNumOfRegularCredits()</a> - Method in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
-<dd>
-<div class="block">Геттер количества обычных зачетов в данном семестре.</div>
-</dd>
-<dt><a href="gradebook/Semester.html#getRegularCreditList()" class="member-name-link">getRegularCreditList()</a> - Method in class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
-<dd>
-<div class="block">Геттер списка с зачетами и их наличием.</div>
-</dd>
-<dt><a href="gradebook/Semester.PairSubjectGrade.html#grade()" class="member-name-link">grade()</a> - Method in record class gradebook.<a href="gradebook/Semester.PairSubjectGrade.html" title="class in gradebook">Semester.PairSubjectGrade</a></dt>
-<dd>
-<div class="block">Returns the value of the <a href="./gradebook/Semester.PairSubjectGrade.html#param-grade"><code>grade</code></a> record component.</div>
+<div class="block">Перечисление оценок.</div>
 </dd>
 <dt><a href="gradebook/package-summary.html">gradebook</a> - package gradebook</dt>
 <dd>&nbsp;</dd>
@@ -149,111 +140,104 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Конструктор зачетки студента.</div>
 </dd>
-</dl>
-<h2 class="title" id="I:H">H</h2>
-<dl class="index">
-<dt><a href="gradebook/Semester.PairSubjectBool.html#hasCredit()" class="member-name-link">hasCredit()</a> - Method in record class gradebook.<a href="gradebook/Semester.PairSubjectBool.html" title="class in gradebook">Semester.PairSubjectBool</a></dt>
+<dt><a href="gradebook/GradeBook.html#%3Cinit%3E(int,java.util.List)" class="member-name-link">GradeBook(int, List&lt;Semester&gt;)</a> - Constructor for class gradebook.<a href="gradebook/GradeBook.html" title="class in gradebook">GradeBook</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/GradeRecord.html" class="type-name-link" title="class in gradebook">GradeRecord</a> - Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
 <dd>
-<div class="block">Returns the value of the <a href="./gradebook/Semester.PairSubjectBool.html#param-hasCredit"><code>hasCredit</code></a> record component.</div>
+<div class="block">Абстрактный класс представляющий пару: (предмет, оценка)</div>
 </dd>
-<dt><a href="gradebook/Semester.PairSubjectBool.html#hashCode()" class="member-name-link">hashCode()</a> - Method in record class gradebook.<a href="gradebook/Semester.PairSubjectBool.html" title="class in gradebook">Semester.PairSubjectBool</a></dt>
+<dt><a href="gradebook/GradeRecord.html#%3Cinit%3E(java.lang.String)" class="member-name-link">GradeRecord(String)</a> - Constructor for class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
 <dd>
-<div class="block">Returns a hash code value for this object.</div>
-</dd>
-<dt><a href="gradebook/Semester.PairSubjectGrade.html#hashCode()" class="member-name-link">hashCode()</a> - Method in record class gradebook.<a href="gradebook/Semester.PairSubjectGrade.html" title="class in gradebook">Semester.PairSubjectGrade</a></dt>
-<dd>
-<div class="block">Returns a hash code value for this object.</div>
+<div class="block">Конструктор абстрактного класса.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
-<dt><a href="gradebook/GradeBook.html#initSemestersArray()" class="member-name-link">initSemestersArray()</a> - Method in class gradebook.<a href="gradebook/GradeBook.html" title="class in gradebook">GradeBook</a></dt>
+<dt><a href="gradebook/DiffCreditRecord.html#isExcellent()" class="member-name-link">isExcellent()</a> - Method in class gradebook.<a href="gradebook/DiffCreditRecord.html" title="class in gradebook">DiffCreditRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/ExamRecord.html#isExcellent()" class="member-name-link">isExcellent()</a> - Method in class gradebook.<a href="gradebook/ExamRecord.html" title="class in gradebook">ExamRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/GradeRecord.html#isExcellent()" class="member-name-link">isExcellent()</a> - Method in class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
 <dd>
-<div class="block">Инициализирует массив состоящий из объектов семестров.</div>
+<div class="block">Возвращает true, если оценка - пятерка, false - иначе.</div>
 </dd>
-<dt><a href="gradebook/GradeBook.html#initSemestersArrayForTest()" class="member-name-link">initSemestersArrayForTest()</a> - Method in class gradebook.<a href="gradebook/GradeBook.html" title="class in gradebook">GradeBook</a></dt>
+<dt><a href="gradebook/RegularCreditRecord.html#isExcellent()" class="member-name-link">isExcellent()</a> - Method in class gradebook.<a href="gradebook/RegularCreditRecord.html" title="class in gradebook">RegularCreditRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/VkrRecord.html#isExcellent()" class="member-name-link">isExcellent()</a> - Method in class gradebook.<a href="gradebook/VkrRecord.html" title="class in gradebook">VkrRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/DiffCreditRecord.html#isPassed()" class="member-name-link">isPassed()</a> - Method in class gradebook.<a href="gradebook/DiffCreditRecord.html" title="class in gradebook">DiffCreditRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/ExamRecord.html#isPassed()" class="member-name-link">isPassed()</a> - Method in class gradebook.<a href="gradebook/ExamRecord.html" title="class in gradebook">ExamRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/GradeRecord.html#isPassed()" class="member-name-link">isPassed()</a> - Method in class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
 <dd>
-<div class="block">Геттер массива семестров для тестов.</div>
+<div class="block">Возвращает true, если предмет сдан, false - иначе.</div>
 </dd>
+<dt><a href="gradebook/RegularCreditRecord.html#isPassed()" class="member-name-link">isPassed()</a> - Method in class gradebook.<a href="gradebook/RegularCreditRecord.html" title="class in gradebook">RegularCreditRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/VkrRecord.html#isPassed()" class="member-name-link">isPassed()</a> - Method in class gradebook.<a href="gradebook/VkrRecord.html" title="class in gradebook">VkrRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/DiffCreditRecord.html#isSatisfactory()" class="member-name-link">isSatisfactory()</a> - Method in class gradebook.<a href="gradebook/DiffCreditRecord.html" title="class in gradebook">DiffCreditRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/ExamRecord.html#isSatisfactory()" class="member-name-link">isSatisfactory()</a> - Method in class gradebook.<a href="gradebook/ExamRecord.html" title="class in gradebook">ExamRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/GradeRecord.html#isSatisfactory()" class="member-name-link">isSatisfactory()</a> - Method in class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
+<dd>
+<div class="block">Возвращает true, если оценка - тройка, false - иначе.</div>
+</dd>
+<dt><a href="gradebook/RegularCreditRecord.html#isSatisfactory()" class="member-name-link">isSatisfactory()</a> - Method in class gradebook.<a href="gradebook/RegularCreditRecord.html" title="class in gradebook">RegularCreditRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/VkrRecord.html#isSatisfactory()" class="member-name-link">isSatisfactory()</a> - Method in class gradebook.<a href="gradebook/VkrRecord.html" title="class in gradebook">VkrRecord</a></dt>
+<dd>&nbsp;</dd>
 </dl>
-<h2 class="title" id="I:P">P</h2>
+<h2 class="title" id="I:R">R</h2>
 <dl class="index">
-<dt><a href="gradebook/Semester.PairSubjectBool.html#%3Cinit%3E(java.lang.String,java.lang.Boolean)" class="member-name-link">PairSubjectBool(String, Boolean)</a> - Constructor for record class gradebook.<a href="gradebook/Semester.PairSubjectBool.html" title="class in gradebook">Semester.PairSubjectBool</a></dt>
+<dt><a href="gradebook/RegularCreditRecord.html" class="type-name-link" title="class in gradebook">RegularCreditRecord</a> - Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/RegularCreditRecord.html#%3Cinit%3E(java.lang.String,boolean)" class="member-name-link">RegularCreditRecord(String, boolean)</a> - Constructor for class gradebook.<a href="gradebook/RegularCreditRecord.html" title="class in gradebook">RegularCreditRecord</a></dt>
 <dd>
-<div class="block">Creates an instance of a <code>PairSubjectBool</code> record class.</div>
-</dd>
-<dt><a href="gradebook/Semester.PairSubjectGrade.html#%3Cinit%3E(java.lang.String,java.lang.Integer)" class="member-name-link">PairSubjectGrade(String, Integer)</a> - Constructor for record class gradebook.<a href="gradebook/Semester.PairSubjectGrade.html" title="class in gradebook">Semester.PairSubjectGrade</a></dt>
-<dd>
-<div class="block">Creates an instance of a <code>PairSubjectGrade</code> record class.</div>
+<div class="block">Конструктор объекта.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
-<dt><a href="gradebook/SemesterType.html#SECOND" class="member-name-link">SECOND</a> - Enum constant in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="gradebook/Semester.html" class="type-name-link" title="class in gradebook">Semester</a> - Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
 <dd>
 <div class="block">Класс объекта семестра.</div>
 </dd>
-<dt><a href="gradebook/Semester.html#%3Cinit%3E(gradebook.SemesterType)" class="member-name-link">Semester(SemesterType)</a> - Constructor for class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
+<dt><a href="gradebook/Semester.html#%3Cinit%3E()" class="member-name-link">Semester()</a> - Constructor for class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
 <dd>
-<div class="block">Конструктор семестра.</div>
-</dd>
-<dt><a href="gradebook/Semester.PairSubjectBool.html" class="type-name-link" title="class in gradebook">Semester.PairSubjectBool</a> - Record Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
-<dd>
-<div class="block">Пара значений: название предмета и оценка за него.</div>
-</dd>
-<dt><a href="gradebook/Semester.PairSubjectGrade.html" class="type-name-link" title="class in gradebook">Semester.PairSubjectGrade</a> - Record Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
-<dd>
-<div class="block">Пара значений: название предмета и оценка за него.</div>
-</dd>
-<dt><a href="gradebook/SemesterType.html" class="type-name-link" title="enum class in gradebook">SemesterType</a> - Enum Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
-<dd>
-<div class="block">Перечисление порядковых номеров семестров.</div>
-</dd>
-<dt><a href="gradebook/GradeBook.html#setThesisGrade(java.lang.Integer)" class="member-name-link">setThesisGrade(Integer)</a> - Method in class gradebook.<a href="gradebook/GradeBook.html" title="class in gradebook">GradeBook</a></dt>
-<dd>
-<div class="block">Устанавливает оценку за квалификационную работу (ВКР).</div>
-</dd>
-<dt><a href="gradebook/SemesterType.html#SEVENTH" class="member-name-link">SEVENTH</a> - Enum constant in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/SemesterType.html#SIXTH" class="member-name-link">SIXTH</a> - Enum constant in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/Semester.PairSubjectBool.html#subject()" class="member-name-link">subject()</a> - Method in record class gradebook.<a href="gradebook/Semester.PairSubjectBool.html" title="class in gradebook">Semester.PairSubjectBool</a></dt>
-<dd>
-<div class="block">Returns the value of the <a href="./gradebook/Semester.PairSubjectBool.html#param-subject"><code>subject</code></a> record component.</div>
-</dd>
-<dt><a href="gradebook/Semester.PairSubjectGrade.html#subject()" class="member-name-link">subject()</a> - Method in record class gradebook.<a href="gradebook/Semester.PairSubjectGrade.html" title="class in gradebook">Semester.PairSubjectGrade</a></dt>
-<dd>
-<div class="block">Returns the value of the <a href="./gradebook/Semester.PairSubjectGrade.html#param-subject"><code>subject</code></a> record component.</div>
+<div class="block">Конструктор объекта.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
-<dt><a href="gradebook/SemesterType.html#THIRD" class="member-name-link">THIRD</a> - Enum constant in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
+<dt><a href="gradebook/Grade.html#THREE" class="member-name-link">THREE</a> - Enum constant in enum class gradebook.<a href="gradebook/Grade.html" title="enum class in gradebook">Grade</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="gradebook/Semester.PairSubjectBool.html#toString()" class="member-name-link">toString()</a> - Method in record class gradebook.<a href="gradebook/Semester.PairSubjectBool.html" title="class in gradebook">Semester.PairSubjectBool</a></dt>
-<dd>
-<div class="block">Returns a string representation of this record class.</div>
-</dd>
-<dt><a href="gradebook/Semester.PairSubjectGrade.html#toString()" class="member-name-link">toString()</a> - Method in record class gradebook.<a href="gradebook/Semester.PairSubjectGrade.html" title="class in gradebook">Semester.PairSubjectGrade</a></dt>
-<dd>
-<div class="block">Returns a string representation of this record class.</div>
-</dd>
+<dt><a href="gradebook/Grade.html#toInt()" class="member-name-link">toInt()</a> - Method in enum class gradebook.<a href="gradebook/Grade.html" title="enum class in gradebook">Grade</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/Grade.html#TWO" class="member-name-link">TWO</a> - Enum constant in enum class gradebook.<a href="gradebook/Grade.html" title="enum class in gradebook">Grade</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:V">V</h2>
 <dl class="index">
-<dt><a href="gradebook/SemesterType.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
+<dt><a href="gradebook/Grade.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class gradebook.<a href="gradebook/Grade.html" title="enum class in gradebook">Grade</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
-<dt><a href="gradebook/SemesterType.html#values()" class="member-name-link">values()</a> - Static method in enum class gradebook.<a href="gradebook/SemesterType.html" title="enum class in gradebook">SemesterType</a></dt>
+<dt><a href="gradebook/Grade.html#values()" class="member-name-link">values()</a> - Static method in enum class gradebook.<a href="gradebook/Grade.html" title="enum class in gradebook">Grade</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
 </dd>
+<dt><a href="gradebook/VkrRecord.html" class="type-name-link" title="class in gradebook">VkrRecord</a> - Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/VkrRecord.html#%3Cinit%3E(java.lang.String,gradebook.Grade)" class="member-name-link">VkrRecord(String, Grade)</a> - Constructor for class gradebook.<a href="gradebook/VkrRecord.html" title="class in gradebook">VkrRecord</a></dt>
+<dd>
+<div class="block">Конструктор объекта.</div>
+</dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>
