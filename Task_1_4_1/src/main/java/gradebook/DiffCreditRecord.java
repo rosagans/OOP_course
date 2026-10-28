@@ -3,7 +3,7 @@ package gradebook;
 /**
  * Класс, представляющий пару: (дифф зачет, оценка)
  */
-public class DiffCreditRecord extends GradeRecord{
+public class DiffCreditRecord extends GradeRecord {
 
     /**
      * Оценка за предмет.

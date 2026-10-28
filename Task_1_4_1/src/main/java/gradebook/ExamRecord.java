@@ -1,9 +1,9 @@
 package gradebook;
 
 /**
- * Класс представляющий пару: (экзамен, оценка)
+ * Класс представляющий пару: (экзамен, оценка).
  */
-public class ExamRecord extends GradeRecord{
+public class ExamRecord extends GradeRecord {
 
     /**
      * Оценка за предмет.

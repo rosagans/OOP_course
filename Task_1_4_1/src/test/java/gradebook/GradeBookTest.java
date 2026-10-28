@@ -165,4 +165,30 @@ public class GradeBookTest {
 
         assertTrue(gb.canGetRedDiploma());
     }
+
+    @Test
+    public void testCanGetRedDiploma_Fail_HasGradeThree() {
+        List<Semester> semesters = createSemesters(2);
+
+        semesters.get(0).addRecord(new ExamRecord("Математика", Grade.THREE)); // Тройка осталась
+        semesters.get(0).addRecord(new ExamRecord("Физика", Grade.FIVE));
+        semesters.get(0).addRecord(new RegularCreditRecord("Физра", true));
+
+        GradeBook gb = new GradeBook(2, semesters);
+
+        assertFalse(gb.canGetRedDiploma());
+    }
+
+    @Test
+    public void testCanGetRedDiploma_EighthSemester_Fail_VkrNotFive() {
+        List<Semester> semesters = createSemesters(8);
+
+        semesters.get(0).addRecord(new ExamRecord("Математика", Grade.FIVE));
+        semesters.get(0).addRecord(new RegularCreditRecord("Физра", true));
+        semesters.get(7).addRecord(new VkrRecord("ВКР", Grade.FOUR)); // Оценка 4 за ВКР
+
+        GradeBook gb = new GradeBook(8, semesters);
+
+        assertFalse(gb.canGetRedDiploma());
+    }
 }

@@ -27,7 +27,8 @@ public class GradeBook {
      */
     public GradeBook(int curSemester) {
         if (curSemester < 1 || curSemester > 8) {
-            throw new IllegalStateException("Попытка создать зачетку с текущим семестром: " + curSemester);
+            throw new IllegalStateException("Попытка создать зачетку с текущим семестром: "
+                + curSemester);
         }
         this.curSemester = curSemester;
         this.semestersArray = new ArrayList<Semester>();
@@ -36,9 +37,16 @@ public class GradeBook {
         }
     }
 
+    /**
+     * Конструктор зачетки студента.
+     *
+     * @param curSemester номер текущего семестра
+     * @param semestersArray список семестров
+     */
     public GradeBook(int curSemester, List<Semester> semestersArray) {
         if (curSemester < 1 || curSemester > 8) {
-            throw new IllegalStateException("Попытка создать зачетку с текущим семестром: " + curSemester);
+            throw new IllegalStateException("Попытка создать зачетку с текущим семестром: "
+                + curSemester);
         }
         this.curSemester = curSemester;
         this.semestersArray = semestersArray;
@@ -52,8 +60,8 @@ public class GradeBook {
      */
     public double calculateAverageGrade() {
         return semestersArray.stream()
-            .flatMap(sem -> sem.getRecordList().stream()).
-            filter(record -> record instanceof ExamRecord || record instanceof  DiffCreditRecord)
+            .flatMap(sem -> sem.getRecordList().stream())
+            .filter(record -> record instanceof ExamRecord || record instanceof  DiffCreditRecord)
             .mapToInt(GradeRecord::getGrade)
             .average()
             .orElse(0.0);
@@ -118,11 +126,13 @@ public class GradeBook {
 
         Map<String, GradeRecord> finalGrades = semestersArray.stream()
             .flatMap(sem -> sem.getRecordList().stream())
-            .filter(rec -> rec instanceof ExamRecord || rec instanceof DiffCreditRecord || rec instanceof VkrRecord)
+            .filter(rec -> rec instanceof ExamRecord
+                || rec instanceof DiffCreditRecord
+                || rec instanceof VkrRecord)
             .collect(Collectors.toMap(
                 GradeRecord::getSubjectName,
                 rec -> rec,
-                (oldRec, newRec) -> newRec // Оставляем самую последнюю (итоговую) оценку
+                (oldRec, newRec) -> newRec // Оставляем самую последнюю оценку
             ));
 
         if (curSemester == 8) {

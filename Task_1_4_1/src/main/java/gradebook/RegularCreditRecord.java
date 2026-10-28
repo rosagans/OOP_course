@@ -1,6 +1,9 @@
 package gradebook;
 
-public class RegularCreditRecord extends GradeRecord{
+/**
+ * Класс, представляющий пару: (название зачета, есть ли зачет).
+ */
+public class RegularCreditRecord extends GradeRecord {
     /**
      * true, если зачет сдан, false - иначе.
      */

@@ -1,6 +1,9 @@
 package gradebook;
 
-public class VkrRecord extends GradeRecord{
+/**
+ * Класс представляющий пару: (ВКР, оценка).
+ */
+public class VkrRecord extends GradeRecord {
 
     /**
      * Оценка за ВКР.
