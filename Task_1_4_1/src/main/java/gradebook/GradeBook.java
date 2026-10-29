@@ -1,7 +1,6 @@
 package gradebook;
 
 import java.util.*;
-import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
 /**
@@ -15,7 +14,7 @@ public class GradeBook {
     private int curSemester;
 
     /**
-     * Список пройденных и текущих семестров.
+     * Список пройденных и текущий семестров.
      */
     private List<Semester> semestersArray;
 
@@ -52,6 +51,10 @@ public class GradeBook {
         this.semestersArray = semestersArray;
     }
 
+    public void addRecord(GradeRecord record, int semester) {
+        semestersArray.get(semester).addRecord(record);
+    }
+
     /**
      * Вычисляет текущий средний балл за все время обучения.
      * Учитывает оценки за экзамены и дифференцированные зачеты.
@@ -61,11 +64,11 @@ public class GradeBook {
     public double calculateAverageGrade() {
         return semestersArray.stream()
             .flatMap(sem -> sem.getRecordList().stream())
-            .filter(record -> record instanceof ExamRecord || record instanceof  DiffCreditRecord)
+            .filter(GradeRecord.class::isInstance)
+            .map(GradeRecord.class::cast)
             .mapToInt(GradeRecord::getGrade)
             .average()
             .orElse(0.0);
-
     }
 
     /**
@@ -78,8 +81,8 @@ public class GradeBook {
 
         return semesters.stream()
             .flatMap(sem -> sem.getRecordList().stream())
-            .filter(record -> record instanceof RegularCreditRecord)
-            .allMatch(GradeRecord::isPassed);
+            .filter(RegularCreditRecord.class::isInstance)
+            .allMatch(Record::isPassed);
     }
 
     /**
@@ -102,8 +105,9 @@ public class GradeBook {
 
         boolean noSatisfactoryInExams = lastTwoSemesters.stream()
             .flatMap(sem -> sem.getRecordList().stream())
-            .filter(record -> record instanceof ExamRecord)
-            .noneMatch(GradeRecord::isSatisfactory);
+            .filter(ExamRecord.class::isInstance)
+            .map(ExamRecord.class::cast)
+            .noneMatch(ExamRecord::isSatisfactory);
         return noSatisfactoryInExams && allCreditsPassed(lastTwoSemesters);
     }
 
@@ -124,21 +128,20 @@ public class GradeBook {
             return false;
         }
 
-        Map<String, GradeRecord> finalGrades = semestersArray.stream()
+        Map<String, Record> finalGrades = semestersArray.stream()
             .flatMap(sem -> sem.getRecordList().stream())
-            .filter(rec -> rec instanceof ExamRecord
-                || rec instanceof DiffCreditRecord
-                || rec instanceof VkrRecord)
+            .filter(rec -> rec instanceof GradeRecord)
             .collect(Collectors.toMap(
-                GradeRecord::getSubjectName,
+                Record::getSubjectName,
                 rec -> rec,
                 (oldRec, newRec) -> newRec // Оставляем самую последнюю оценку
             ));
 
         if (curSemester == 8) {
             boolean vkrExcellent = finalGrades.values().stream()
-                .filter(rec -> rec instanceof VkrRecord)
-                .anyMatch(GradeRecord::isExcellent);
+                .filter(VkrRecord.class::isInstance)
+                .map(VkrRecord.class::cast)
+                .anyMatch(VkrRecord::isExcellent);
             if (!vkrExcellent) {
                 return false;
             }
@@ -149,15 +152,17 @@ public class GradeBook {
         }
 
         boolean noSatisfactory = finalGrades.values().stream()
-            .noneMatch(rec -> rec.getGrade() <= 3);
+            .filter(GradeRecord.class::isInstance)
+            .allMatch(record -> ((GradeRecord) record).getGrade() > 3);
 
         long excellentCount = finalGrades.values().stream()
-            .filter(GradeRecord::isExcellent)
+            .filter(GradeRecord.class::isInstance)
+            .filter(record -> ((GradeRecord) record).isExcellent())
             .count();
 
         double excellentPercentage = (double) excellentCount / finalGrades.size();
 
-        return noSatisfactory && (excellentPercentage >= 0.75);
+        return allCreditsPassed(semestersArray) && noSatisfactory && (excellentPercentage >= 0.75);
     }
 
     /**
@@ -177,8 +182,8 @@ public class GradeBook {
         Semester lastSemester = semestersArray.get(curSemester - 2);
 
         boolean allExcellent = lastSemester.getRecordList().stream()
-            .filter(record -> record instanceof ExamRecord || record instanceof  DiffCreditRecord)
-            .allMatch(GradeRecord::isExcellent);
+            .filter(record -> record instanceof GradeRecord)
+            .allMatch(record -> ((GradeRecord) record).isExcellent());
         return allExcellent && allCreditsPassed(List.of(lastSemester));
     }
 }

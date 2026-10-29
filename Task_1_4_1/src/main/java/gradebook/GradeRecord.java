@@ -1,11 +1,11 @@
 package gradebook;
 
-/**
- * Абстрактный класс представляющий пару: (предмет, оценка).
- */
-public abstract class GradeRecord {
+public abstract class GradeRecord extends Record {
 
-    private final String subjectName;
+    /**
+     * Оценка за предмет.
+     */
+    private final Grade grade;
 
     /**
      * Конструктор абстрактного класса.
@@ -13,42 +13,37 @@ public abstract class GradeRecord {
      *
      * @param subjectName имя предмета
      */
-    public GradeRecord(String subjectName) {
-        this.subjectName = subjectName;
-    }
-
-    /**
-     * Геттер названия предмета.
-     *
-     * @return предмет
-     */
-    public String getSubjectName() {
-        return subjectName;
+    public GradeRecord(String subjectName, Grade grade) {
+        super(subjectName);
+        this.grade = grade;
     }
 
     /**
      * Геттер оценки за предмет.
-     * Возвращает 0 для зачетов
      *
      * @return оценка за предмет
      */
-    public abstract int getGrade();
+    public int getGrade() {
+        return grade.toInt();
+    }
 
     /**
      * Возвращает true, если оценка - тройка, false - иначе.
-     * (Для обыкновенных зачетов всегда false)
      *
      * @return true, если оценка - тройка, false - иначе
      */
-    public abstract boolean isSatisfactory();
+    public boolean isSatisfactory() {
+        return grade.toInt() == 3;
+    }
 
     /**
      * Возвращает true, если оценка - пятерка, false - иначе.
-     * (Для обыкновенных зачетов всегда false)
      *
      * @return true, если оценка - пятерка, false - иначе
      */
-    public abstract boolean isExcellent();
+    public boolean isExcellent() {
+        return grade.toInt() == 5;
+    }
 
     /**
      * Возвращает true, если предмет сдан, false - иначе.
@@ -56,5 +51,7 @@ public abstract class GradeRecord {
      *
      * @return true, если предмет сдан, false - иначе
      */
-    public abstract boolean isPassed();
+    public boolean isPassed() {
+        return grade.toInt() > 2;
+    }
 }

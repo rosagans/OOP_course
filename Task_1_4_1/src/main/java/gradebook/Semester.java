@@ -11,7 +11,7 @@ public class Semester {
      * где предмет это либо экзамен, либо дифф зачет, либо ВКР, либо зачет.
      * В случае обычного зачета оценка = сдал или не сдал.
      */
-    private final List<GradeRecord> recordList;
+    private final List<Record> recordList;
 
     /**
      * Конструктор объекта.
@@ -26,7 +26,7 @@ public class Semester {
      *
      * @param record новая запись
      */
-    public void addRecord(GradeRecord record) {
+    public void addRecord(Record record) {
         recordList.add(record);
     }
 
@@ -36,7 +36,7 @@ public class Semester {
      *
      * @return неизменяемый список RecordList
      */
-    public  List<GradeRecord> getRecordList() {
+    public  List<Record> getRecordList() {
         return Collections.unmodifiableList(recordList);
     }
 }
