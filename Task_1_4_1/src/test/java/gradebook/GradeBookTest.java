@@ -17,6 +17,25 @@ public class GradeBookTest {
         return list;
     }
 
+    @Test
+    public void testInaccurateGivenSemester9() {
+        List<Semester> semesters = createSemesters(2);
+
+        // 1 семестр
+        semesters.get(0).addRecord(new ExamRecord("Математика", Grade.FIVE));
+        semesters.get(0).addRecord(new DiffCreditRecord("Английский", Grade.FOUR));
+
+        // 2 семестр
+        semesters.get(1).addRecord(new ExamRecord("Физика", Grade.FOUR));
+
+        assertThrows(IllegalStateException.class, () -> new GradeBook(9, semesters));
+    }
+
+    @Test
+    public void testInaccurateGivenSemester0() {
+        assertThrows(IllegalStateException.class, () -> new GradeBook(0));
+    }
+
     // --- 1. Тестирование подсчета среднего балла ---
     @Test
     public void testCalculateAverageGrade() {
