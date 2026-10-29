@@ -51,7 +51,9 @@ loadScripts(document, 'script');</script>
 <a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
-<dt><a href="gradebook/Semester.html#addRecord(gradebook.GradeRecord)" class="member-name-link">addRecord(GradeRecord)</a> - Method in class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
+<dt><a href="gradebook/GradeBook.html#addRecord(gradebook.GradeRecord,int)" class="member-name-link">addRecord(GradeRecord, int)</a> - Method in class gradebook.<a href="gradebook/GradeBook.html" title="class in gradebook">GradeBook</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/Semester.html#addRecord(gradebook.Record)" class="member-name-link">addRecord(Record)</a> - Method in class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
 <dd>
 <div class="block">Добавление новой записи в RecordList.</div>
 </dd>
@@ -106,23 +108,15 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
-<dt><a href="gradebook/DiffCreditRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class gradebook.<a href="gradebook/DiffCreditRecord.html" title="class in gradebook">DiffCreditRecord</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/ExamRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class gradebook.<a href="gradebook/ExamRecord.html" title="class in gradebook">ExamRecord</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="gradebook/GradeRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
 <dd>
 <div class="block">Геттер оценки за предмет.</div>
 </dd>
-<dt><a href="gradebook/RegularCreditRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class gradebook.<a href="gradebook/RegularCreditRecord.html" title="class in gradebook">RegularCreditRecord</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/VkrRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class gradebook.<a href="gradebook/VkrRecord.html" title="class in gradebook">VkrRecord</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="gradebook/Semester.html#getRecordList()" class="member-name-link">getRecordList()</a> - Method in class gradebook.<a href="gradebook/Semester.html" title="class in gradebook">Semester</a></dt>
 <dd>
 <div class="block">Геттер RecordList.</div>
 </dd>
-<dt><a href="gradebook/GradeRecord.html#getSubjectName()" class="member-name-link">getSubjectName()</a> - Method in class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
+<dt><a href="gradebook/Record.html#getSubjectName()" class="member-name-link">getSubjectName()</a> - Method in class gradebook.<a href="gradebook/Record.html" title="class in gradebook">Record</a></dt>
 <dd>
 <div class="block">Геттер названия предмета.</div>
 </dd>
@@ -145,55 +139,43 @@ loadScripts(document, 'script');</script>
 <div class="block">Конструктор зачетки студента.</div>
 </dd>
 <dt><a href="gradebook/GradeRecord.html" class="type-name-link" title="class in gradebook">GradeRecord</a> - Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
-<dd>
-<div class="block">Абстрактный класс представляющий пару: (предмет, оценка).</div>
-</dd>
-<dt><a href="gradebook/GradeRecord.html#%3Cinit%3E(java.lang.String)" class="member-name-link">GradeRecord(String)</a> - Constructor for class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="gradebook/GradeRecord.html#%3Cinit%3E(java.lang.String,gradebook.Grade)" class="member-name-link">GradeRecord(String, Grade)</a> - Constructor for class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
 <dd>
 <div class="block">Конструктор абстрактного класса.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
-<dt><a href="gradebook/DiffCreditRecord.html#isExcellent()" class="member-name-link">isExcellent()</a> - Method in class gradebook.<a href="gradebook/DiffCreditRecord.html" title="class in gradebook">DiffCreditRecord</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/ExamRecord.html#isExcellent()" class="member-name-link">isExcellent()</a> - Method in class gradebook.<a href="gradebook/ExamRecord.html" title="class in gradebook">ExamRecord</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="gradebook/GradeRecord.html#isExcellent()" class="member-name-link">isExcellent()</a> - Method in class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
 <dd>
 <div class="block">Возвращает true, если оценка - пятерка, false - иначе.</div>
 </dd>
-<dt><a href="gradebook/RegularCreditRecord.html#isExcellent()" class="member-name-link">isExcellent()</a> - Method in class gradebook.<a href="gradebook/RegularCreditRecord.html" title="class in gradebook">RegularCreditRecord</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/VkrRecord.html#isExcellent()" class="member-name-link">isExcellent()</a> - Method in class gradebook.<a href="gradebook/VkrRecord.html" title="class in gradebook">VkrRecord</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/DiffCreditRecord.html#isPassed()" class="member-name-link">isPassed()</a> - Method in class gradebook.<a href="gradebook/DiffCreditRecord.html" title="class in gradebook">DiffCreditRecord</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/ExamRecord.html#isPassed()" class="member-name-link">isPassed()</a> - Method in class gradebook.<a href="gradebook/ExamRecord.html" title="class in gradebook">ExamRecord</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="gradebook/GradeRecord.html#isPassed()" class="member-name-link">isPassed()</a> - Method in class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
+<dd>
+<div class="block">Возвращает true, если предмет сдан, false - иначе.</div>
+</dd>
+<dt><a href="gradebook/Record.html#isPassed()" class="member-name-link">isPassed()</a> - Method in class gradebook.<a href="gradebook/Record.html" title="class in gradebook">Record</a></dt>
 <dd>
 <div class="block">Возвращает true, если предмет сдан, false - иначе.</div>
 </dd>
 <dt><a href="gradebook/RegularCreditRecord.html#isPassed()" class="member-name-link">isPassed()</a> - Method in class gradebook.<a href="gradebook/RegularCreditRecord.html" title="class in gradebook">RegularCreditRecord</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="gradebook/VkrRecord.html#isPassed()" class="member-name-link">isPassed()</a> - Method in class gradebook.<a href="gradebook/VkrRecord.html" title="class in gradebook">VkrRecord</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/DiffCreditRecord.html#isSatisfactory()" class="member-name-link">isSatisfactory()</a> - Method in class gradebook.<a href="gradebook/DiffCreditRecord.html" title="class in gradebook">DiffCreditRecord</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/ExamRecord.html#isSatisfactory()" class="member-name-link">isSatisfactory()</a> - Method in class gradebook.<a href="gradebook/ExamRecord.html" title="class in gradebook">ExamRecord</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="gradebook/GradeRecord.html#isSatisfactory()" class="member-name-link">isSatisfactory()</a> - Method in class gradebook.<a href="gradebook/GradeRecord.html" title="class in gradebook">GradeRecord</a></dt>
 <dd>
 <div class="block">Возвращает true, если оценка - тройка, false - иначе.</div>
 </dd>
-<dt><a href="gradebook/RegularCreditRecord.html#isSatisfactory()" class="member-name-link">isSatisfactory()</a> - Method in class gradebook.<a href="gradebook/RegularCreditRecord.html" title="class in gradebook">RegularCreditRecord</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="gradebook/VkrRecord.html#isSatisfactory()" class="member-name-link">isSatisfactory()</a> - Method in class gradebook.<a href="gradebook/VkrRecord.html" title="class in gradebook">VkrRecord</a></dt>
-<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
+<dt><a href="gradebook/Record.html" class="type-name-link" title="class in gradebook">Record</a> - Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
+<dd>
+<div class="block">Абстрактный класс представляющий пару: (предмет, оценка).</div>
+</dd>
+<dt><a href="gradebook/Record.html#%3Cinit%3E(java.lang.String)" class="member-name-link">Record(String)</a> - Constructor for class gradebook.<a href="gradebook/Record.html" title="class in gradebook">Record</a></dt>
+<dd>
+<div class="block">Конструктор абстрактного класса.</div>
+</dd>
 <dt><a href="gradebook/RegularCreditRecord.html" class="type-name-link" title="class in gradebook">RegularCreditRecord</a> - Class in <a href="gradebook/package-summary.html">gradebook</a></dt>
 <dd>
 <div class="block">Класс, представляющий пару: (название зачета, есть ли зачет).</div>
